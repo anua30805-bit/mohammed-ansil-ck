@@ -1,0 +1,3 @@
+@echo off
+echo Opening Mohammed Ansil's Portfolio in your default browser...
+start "" "%~dp0index.html"

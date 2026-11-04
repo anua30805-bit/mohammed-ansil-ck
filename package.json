@@ -1,0 +1,22 @@
+{
+  "name": "mohammed-ansil-portfolio",
+  "version": "1.0.0",
+  "description": "Mohammed Ansil — AI Content Creator Personal Portfolio",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx vite",
+    "preview": "npx vite preview",
+    "build": "npx vite build"
+  },
+  "keywords": [
+    "portfolio",
+    "ai-content-creator",
+    "mohammed-ansil"
+  ],
+  "author": "Mohammed Ansil",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
