@@ -520,13 +520,14 @@ img {
 .hero-variety-heading {
   position: relative;
   z-index: 1;
-  font-size: clamp(3.6rem, 7.8vw, 6.2rem);
-  line-height: 0.95;
+  font-size: clamp(2.4rem, 7.8vw, 6.2rem);
+  line-height: 1;
   margin: 0;
   letter-spacing: -0.01em;
-  display: flex;
+  display: inline-flex;
   align-items: baseline;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  white-space: nowrap;
   animation: subtleFloat 5s ease-in-out infinite;
   transition: transform var(--transition-normal);
   cursor: default;
@@ -1830,10 +1831,6 @@ img {
     max-width: 100%;
   }
 
-  .hero-visual-col {
-    order: -1;
-  }
-
   .about-grid-layout {
     grid-template-columns: 1fr;
   }
@@ -1867,6 +1864,11 @@ img {
 }
 
 @media (max-width: 768px) {
+  /* Header Mobile Optimization */
+  .header-container {
+    padding: 0.85rem 1.25rem;
+  }
+
   .desktop-nav {
     display: none;
   }
@@ -1875,8 +1877,90 @@ img {
     display: flex;
   }
 
+  .brand-tag {
+    display: none;
+  }
+
+  .brand-monogram,
+  .brand-dot {
+    font-size: 1.35rem;
+  }
+
+  .btn-header-cta {
+    padding: 0.5rem 0.95rem;
+    font-size: 0.82rem;
+  }
+
+  /* Hero Section Mobile Optimization */
+  .hero-section {
+    padding: 3rem 0 3.5rem;
+  }
+
+  .hero-layout {
+    gap: 2.75rem;
+  }
+
+  .portfolio-title-wrapper {
+    overflow: hidden;
+    max-width: 100%;
+  }
+
   .hero-variety-heading {
-    font-size: clamp(2.8rem, 14vw, 4rem);
+    font-size: clamp(2rem, 9.4vw, 3.6rem);
+    white-space: nowrap;
+    flex-wrap: nowrap;
+  }
+
+  .hero-variety-heading .word-p2 {
+    margin-left: 0.08em;
+  }
+
+  .portfolio-bg-watermark {
+    font-size: clamp(2.8rem, 13vw, 4.6rem);
+    letter-spacing: 0.12em;
+    top: -15%;
+    max-width: 100%;
+  }
+
+  .hero-actions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+
+  .hero-actions-row .btn {
+    padding: 0.85rem 1rem;
+    font-size: 0.85rem;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-stats-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    padding: 1.15rem 0.75rem;
+    text-align: center;
+    border-radius: var(--radius-md);
+  }
+
+  .stat-divider {
+    display: none;
+  }
+
+  .stat-pill {
+    align-items: center;
+  }
+
+  .stat-num {
+    font-size: 1.45rem;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.02em;
   }
 
   .portfolio-stamp-badge {
@@ -1888,25 +1972,12 @@ img {
     height: 70px;
   }
 
-  .meta-tag-line {
-    flex-wrap: wrap;
-    gap: 0.4rem;
+  .portrait-card-frame {
+    max-width: 380px;
+    margin: 0 auto;
   }
 
-  .hero-main-heading {
-    font-size: 2.8rem;
-  }
-
-  .hero-stats-strip {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
-  }
-
-  .stat-divider {
-    display: none;
-  }
-
+  /* Services & Tools Mobile */
   .services-grid {
     grid-template-columns: 1fr;
   }
@@ -1915,8 +1986,55 @@ img {
     grid-template-columns: 1fr;
   }
 
+  /* Portfolio Section Mobile Optimization */
+  .portfolio-section {
+    padding: 4.5rem 0;
+  }
+
+  .portfolio-filter-nav {
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    gap: 0.6rem;
+    padding: 0.25rem 0.5rem 1rem;
+    margin-bottom: 2rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .portfolio-filter-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 0.55rem 1.25rem;
+    font-size: 0.82rem;
+  }
+
   .portfolio-grid {
     grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .project-thumb-frame {
+    height: auto;
+    aspect-ratio: 16 / 9;
+    min-height: 210px;
+  }
+
+  .project-info {
+    padding: 1.35rem 1.25rem;
+  }
+
+  .project-title {
+    font-size: 1.25rem;
+  }
+
+  .project-summary {
+    font-size: 0.88rem;
   }
 
   .about-narrative-card {
@@ -1933,51 +2051,74 @@ img {
     gap: 1.5rem;
     text-align: center;
   }
-}
 
-@media (max-width: 480px) {
-  .header-container {
-    padding: 1rem 1.25rem;
+  /* Lightbox Modal Mobile */
+  .luxury-modal-backdrop {
+    padding: 1rem 0.65rem;
   }
 
-  .brand-monogram,
-  .brand-dot {
+  .luxury-modal-container {
+    max-height: 92vh;
+    border-radius: var(--radius-md);
+  }
+
+  .modal-image-col {
+    min-height: 220px;
+    max-height: 40vh;
+  }
+
+  .modal-info-col {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .modal-title {
     font-size: 1.45rem;
   }
 
-  .brand-tag {
-    display: none;
+  .modal-desc {
+    font-size: 0.88rem;
+    margin-bottom: 1.25rem;
   }
 
-  .btn-header-cta {
-    padding: 0.55rem 1rem;
-    font-size: 0.8rem;
+  .modal-close-btn {
+    top: 0.65rem;
+    right: 0.65rem;
+    width: 36px;
+    height: 36px;
+    font-size: 1.3rem;
+    z-index: 10;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-variety-heading {
+    font-size: clamp(1.85rem, 8.8vw, 2.7rem);
+  }
+
+  .hero-actions-row {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 1.85rem;
+  }
+
+  .portrait-card-frame {
+    max-width: 320px;
+    margin: 0 auto;
   }
 
   .btn-header-cta span {
     display: none;
   }
 
-  .contact-channels-grid {
-    padding: 0 0.25rem;
+  .btn-header-cta {
+    padding: 0.55rem 0.75rem;
+    border-radius: 50%;
   }
 
-  .channel-card {
-    padding: 1.35rem 1.15rem;
-    gap: 1rem;
-  }
-
-  .channel-icon-wrap {
-    width: 46px;
-    height: 46px;
-    font-size: 1.25rem;
-  }
-
-  .channel-title {
-    font-size: 1.12rem;
-  }
-
-  .channel-value {
-    font-size: 0.88rem;
+  .btn-header-cta i {
+    font-size: 1rem;
+    margin: 0;
   }
 }
