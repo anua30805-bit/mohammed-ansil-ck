@@ -244,26 +244,32 @@ img {
 }
 
 .brand-signature {
-  display: flex;
+  display: inline-flex;
   align-items: baseline;
-  gap: 0.4rem;
+  gap: 0.15rem;
   text-decoration: none;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.brand-signature:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
 }
 
 .brand-monogram {
   font-family: var(--font-heading);
   font-size: 1.65rem;
   font-weight: 800;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   color: var(--text-primary);
 }
 
 .brand-dot {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-family: var(--font-heading);
+  font-size: 1.65rem;
+  font-weight: 800;
   color: var(--accent-color);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.04em;
 }
 
 .brand-tag {
@@ -1653,6 +1659,10 @@ img {
 
 .footer-brand .brand-monogram {
   color: #F5F0E8;
+}
+
+.footer-brand .brand-dot {
+  color: #C89566;
 }
 
 .footer-tagline {
