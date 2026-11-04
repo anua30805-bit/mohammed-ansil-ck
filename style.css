@@ -1479,24 +1479,19 @@ img {
   background-color: var(--bg-primary);
 }
 
-.contact-layout-grid {
+.contact-channels-grid {
   display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: 3.5rem;
-  align-items: flex-start;
-}
-
-.contact-channels-col {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1140px;
+  margin: 0 auto;
 }
 
 .channel-card {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: 1.5rem 1.75rem;
+  padding: 2rem 1.75rem;
   box-shadow: var(--shadow-card);
   display: flex;
   align-items: center;
@@ -1506,21 +1501,21 @@ img {
 }
 
 .channel-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px);
   border-color: var(--accent-color);
-  box-shadow: var(--shadow-hover);
+  box-shadow: 0 16px 36px rgba(107, 66, 47, 0.12), 0 4px 12px rgba(43, 33, 29, 0.05);
 }
 
 .channel-icon-wrap {
-  width: 52px;
-  height: 52px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: var(--accent-subtle);
   color: var(--accent-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   flex-shrink: 0;
   transition: all var(--transition-fast);
 }
@@ -1544,95 +1539,26 @@ img {
 }
 
 .channel-title {
-  font-size: 1.2rem;
-  margin: 0.15rem 0;
+  font-size: 1.25rem;
+  margin: 0.2rem 0;
   color: var(--text-primary);
 }
 
 .channel-value {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
+  word-break: break-all;
 }
 
 .channel-arrow {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: var(--border-color);
   transition: all var(--transition-fast);
 }
 
 .channel-card:hover .channel-arrow {
   color: var(--accent-color);
-  transform: translate(2px, -2px);
-}
-
-/* Contact Form Card */
-.contact-form-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  padding: 3rem;
-  box-shadow: var(--shadow-card);
-}
-
-.form-header {
-  margin-bottom: 2rem;
-}
-
-.form-kicker {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  color: var(--accent-color);
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.form-title {
-  font-size: 1.85rem;
-  margin-bottom: 0.5rem;
-}
-
-.form-sub {
-  font-size: 0.92rem;
-  color: var(--text-muted);
-}
-
-.luxury-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.35rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-}
-
-.form-group label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  letter-spacing: 0.02em;
-}
-
-.form-input {
-  background: var(--bg-primary);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-sm);
-  padding: 0.85rem 1.15rem;
-  font-family: var(--font-body);
-  font-size: 0.92rem;
-  color: var(--text-primary);
-  transition: all var(--transition-fast);
-  outline: none;
-}
-
-.form-input:focus {
-  border-color: var(--accent-color);
-  background: #FFFFFF;
-  box-shadow: 0 0 0 3px var(--accent-subtle);
+  transform: translate(3px, -3px);
 }
 
 /* ================= 10. LUXURY FOOTER ================= */
@@ -1924,8 +1850,10 @@ img {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .contact-layout-grid {
+  .contact-channels-grid {
     grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
   }
 
   .footer-top-row {

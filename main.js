@@ -221,24 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 8. INTERACTIVE WHATSAPP INQUIRY GENERATOR
-  const sendWhatsAppBtn = document.getElementById('sendWhatsAppBtn');
-  if (sendWhatsAppBtn) {
-    sendWhatsAppBtn.addEventListener('click', () => {
-      const name = document.getElementById('clientName').value.trim() || 'Client';
-      const service = document.getElementById('serviceType').value;
-      const timeline = document.getElementById('timeline').value;
-      const details = document.getElementById('projectDetails').value.trim() || 'Excited to discuss our creative requirements with you.';
-
-      const message = `Hi Mohammed Ansil,\n\nMy name is *${name}*.\nI am interested in your *${service}* service.\n\n*Target Timeline:* ${timeline}\n*Project Overview:* ${details}\n\nLooking forward to collaborating with you!`;
-
-      const encodedMsg = encodeURIComponent(message);
-      const whatsappUrl = `https://wa.me/919207560571?text=${encodedMsg}`;
-      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-    });
-  }
-
-  // 9. SUBTLE SCROLL-REVEAL ENTRANCE FOR PORTFOLIO
+  // 8. SUBTLE SCROLL-REVEAL ENTRANCE FOR PORTFOLIO
   const portfolioGrid = document.getElementById('portfolioGrid');
   if (portfolioGrid && 'IntersectionObserver' in window) {
     const cards = portfolioGrid.querySelectorAll('.project-card');
