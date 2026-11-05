@@ -769,10 +769,14 @@ img {
 .portrait-img {
   width: 100%;
   height: 520px;
-  object-fit: cover;
-  object-position: center 18%;
+  object-fit: contain;
+  object-position: center bottom;
+  padding: 12px 6px 0;
+  box-sizing: border-box;
   border-radius: calc(var(--radius-lg) - 6px);
   display: block;
+  background: radial-gradient(ellipse at 50% 36%, #FFFFFF 0%, #F5ECE0 55%, #E5D5C3 100%);
+  filter: contrast(1.02);
 }
 
 .portrait-sheen {
@@ -1977,6 +1981,10 @@ img {
     margin: 0 auto;
   }
 
+  .portrait-img {
+    height: 460px;
+  }
+
   /* Services & Tools Mobile */
   .services-grid {
     grid-template-columns: 1fr;
@@ -2106,6 +2114,10 @@ img {
   .portrait-card-frame {
     max-width: 320px;
     margin: 0 auto;
+  }
+
+  .portrait-img {
+    height: 400px;
   }
 
   .btn-header-cta span {
