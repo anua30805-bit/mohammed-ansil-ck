@@ -768,9 +768,9 @@ img {
 
 .portrait-img {
   width: 100%;
-  height: 550px;
+  height: 520px;
   object-fit: cover;
-  object-position: center 6%;
+  object-position: 47% center;
   border-radius: calc(var(--radius-lg) - 6px);
   display: block;
 }
@@ -1979,7 +1979,7 @@ img {
 
   .portrait-img {
     height: 480px;
-    object-position: center 6%;
+    object-position: 47% center;
   }
 
   /* Services & Tools Mobile */
@@ -2115,7 +2115,7 @@ img {
 
   .portrait-img {
     height: 420px;
-    object-position: center 6%;
+    object-position: 47% center;
   }
 
   .btn-header-cta span {

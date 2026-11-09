@@ -77,6 +77,9 @@ while ($listener.IsListening) {
         try {
             $response.OutputStream.Close()
         } catch {}
+        try {
+            $response.Close()
+        } catch {}
     } catch {
         # Loop protection against listener aborts
     }
