@@ -78,25 +78,93 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 4. HERO SUBTLE DEPTH PARALLAX ON DESKTOP MOUSE MOVE
+  // 4. HERO & VISION SCROLL/CURSOR DEPTH PARALLAX
   const heroSection = document.getElementById('home');
+  const heroOrbitStage = document.getElementById('heroOrbitStage');
   const heroWordmark = document.getElementById('heroWordmarkLayer');
   const heroSubject = document.getElementById('heroSubjectLayer');
+  const visionSection = document.getElementById('vision');
+  const visionPreviews = document.querySelectorAll('.floating-preview-card');
+  const visionSpheres = document.querySelectorAll('.chrome-sphere');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (heroSection && heroWordmark && heroSubject && window.matchMedia('(pointer: fine)').matches) {
-    heroSection.addEventListener('mousemove', (e) => {
-      const rect = heroSection.getBoundingClientRect();
-      const nx = (e.clientX - rect.left) / rect.width - 0.5;
-      const ny = (e.clientY - rect.top) / rect.height - 0.5;
+  if (!reducedMotion && heroSection && heroWordmark && heroSubject) {
+    let targetMx = 0;
+    let targetMy = 0;
+    let currentMx = 0;
+    let currentMy = 0;
+    let parallaxRaf = null;
 
-      heroWordmark.style.transform = `translate3d(${-nx * 14}px, calc(-48% + ${-ny * 10}px), 0)`;
-      heroSubject.style.transform = `translate3d(calc(-50% + ${nx * 10}px), ${ny * 6}px, 0)`;
-    });
+    const applyParallaxFrame = () => {
+      currentMx += (targetMx - currentMx) * 0.08;
+      currentMy += (targetMy - currentMy) * 0.08;
 
-    heroSection.addEventListener('mouseleave', () => {
-      heroWordmark.style.transform = 'translate3d(0, -48%, 0)';
-      heroSubject.style.transform = 'translate3d(-50%, 0, 0)';
-    });
+      const sy = window.scrollY;
+      const heroH = heroSection.offsetHeight || 900;
+      const heroProgress = Math.min(1, Math.max(0, sy / heroH));
+
+      // Layer 1: PORTFOLIO wordmark parallax & scale
+      const wordShiftY = sy * 0.16;
+      const wordScale = 1 - heroProgress * 0.06;
+      heroWordmark.style.transform = `translate3d(${(-currentMx * 16).toFixed(2)}px, calc(-48% + ${(-currentMy * 10 + wordShiftY).toFixed(2)}px), 0) scale(${wordScale.toFixed(4)})`;
+      heroWordmark.style.opacity = String(Math.max(0.18, 1 - heroProgress * 1.05));
+
+      // Layer 2: Foreground subject cutout parallax
+      const subjShiftY = sy * 0.06;
+      heroSubject.style.transform = `translate3d(calc(-50% + ${(currentMx * 12).toFixed(2)}px), ${(currentMy * 6 + subjShiftY).toFixed(2)}px, 0)`;
+
+      // Layer 3: Subtle orbital ring depth shift
+      if (heroOrbitStage) {
+        heroOrbitStage.style.transform = `translate3d(${(-currentMx * 8).toFixed(2)}px, ${(-currentMy * 6 + sy * 0.09).toFixed(2)}px, 0)`;
+      }
+
+      // Layer 4: IMAGINE. stage spheres & floating tilted browser cards
+      if (visionSection) {
+        const vRect = visionSection.getBoundingClientRect();
+        if (vRect.bottom > -100 && vRect.top < window.innerHeight + 100) {
+          const centerOffset = (vRect.top + vRect.height * 0.5 - window.innerHeight * 0.5) / window.innerHeight;
+          visionPreviews.forEach((card, idx) => {
+            const speed = idx === 0 ? -28 : idx === 1 ? 22 : -18;
+            card.style.setProperty('--parallax-y', `${(centerOffset * speed).toFixed(2)}px`);
+          });
+          visionSpheres.forEach((sphere, idx) => {
+            const speed = idx === 0 ? 34 : idx === 1 ? -24 : 30;
+            sphere.style.setProperty('--sphere-y', `${(centerOffset * speed).toFixed(2)}px`);
+          });
+        }
+      }
+
+      const delta = Math.abs(targetMx - currentMx) + Math.abs(targetMy - currentMy);
+      if (delta > 0.001) {
+        parallaxRaf = requestAnimationFrame(applyParallaxFrame);
+      } else {
+        parallaxRaf = null;
+      }
+    };
+
+    const queueParallax = () => {
+      if (!parallaxRaf) {
+        parallaxRaf = requestAnimationFrame(applyParallaxFrame);
+      }
+    };
+
+    if (window.matchMedia('(pointer: fine)').matches) {
+      heroSection.addEventListener('mousemove', (e) => {
+        const rect = heroSection.getBoundingClientRect();
+        targetMx = (e.clientX - rect.left) / rect.width - 0.5;
+        targetMy = (e.clientY - rect.top) / rect.height - 0.5;
+        queueParallax();
+      });
+
+      heroSection.addEventListener('mouseleave', () => {
+        targetMx = 0;
+        targetMy = 0;
+        queueParallax();
+      });
+    }
+
+    window.addEventListener('scroll', queueParallax, { passive: true });
+    applyParallaxFrame();
   }
 
   // 5. SERVICES ACCORDION (WHAT I CAN DO)
@@ -355,6 +423,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const elPrompt = document.getElementById('enginePromptLine');
   const elTags = document.getElementById('engineTagsRow');
 
+  const engineStage = document.getElementById('engineStage');
   engineTabs.forEach(tab => {
     tab.addEventListener('click', () => {
       const key = tab.getAttribute('data-tab');
@@ -379,8 +448,8 @@ document.addEventListener('DOMContentLoaded', () => {
         elTags.innerHTML = data.tags.map(t => `<span>${t}</span>`).join('');
       }
       if (elSpecList) {
-        elSpecList.innerHTML = data.specs.map(([name, desc, meta]) => `
-          <div class="spec-row">
+        elSpecList.innerHTML = data.specs.map(([name, desc, meta], idx) => `
+          <div class="spec-row spec-item-enter" style="--spec-i: ${idx}">
             <div>
               <strong>${name}</strong>
               <small>${desc}</small>
@@ -389,65 +458,122 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         `).join('');
       }
+
+      if (engineStage) {
+        engineStage.classList.remove('tab-swapping');
+        void engineStage.offsetWidth;
+        engineStage.classList.add('tab-swapping');
+      }
     });
   });
 
-  // 9. SUBTLE FLOATING EMBER / AUTUMN SPARK PARTICLES ON CANVAS
+  // 9. AMBIENT FALLING EMBER LEAVES & SPARK PARTICLES ACROSS SERVICES / WORK
   const canvas = document.getElementById('ambientParticleCanvas');
-  if (canvas) {
+  const emberZones = [document.getElementById('services'), document.getElementById('portfolio')].filter(Boolean);
+  if (canvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const ctx = canvas.getContext('2d');
-    const parentSection = canvas.parentElement;
     let width = 0;
     let height = 0;
     let particles = [];
     let animId = null;
 
-    const palette = [
-      'rgba(224, 96, 20, 0.78)',
-      'rgba(240, 145, 36, 0.65)',
-      'rgba(184, 52, 22, 0.7)',
-      'rgba(200, 243, 29, 0.35)'
+    const leafPalettes = [
+      { edge: '#E84214', mid: '#FF7D24', tip: '#FFB636' },
+      { edge: '#C72B12', mid: '#EB5E1B', tip: '#F3942A' },
+      { edge: '#D85814', mid: '#F69D26', tip: '#FFD15C' },
+      { edge: '#9E2312', mid: '#DF4818', tip: '#FF8524' }
     ];
 
     const resizeCanvas = () => {
-      if (!parentSection) return;
-      width = canvas.width = parentSection.offsetWidth;
-      height = canvas.height = parentSection.offsetHeight;
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    };
+
+    const spawnLeaf = (randomY = false) => {
+      const isSpark = Math.random() < 0.35;
+      const pal = leafPalettes[Math.floor(Math.random() * leafPalettes.length)];
+      return {
+        isSpark,
+        x: Math.random() * (width || 1440),
+        y: randomY ? Math.random() * (height || 900) : -30 - Math.random() * 80,
+        size: isSpark ? 1.5 + Math.random() * 2.5 : 10 + Math.random() * 14,
+        vx: -0.35 + Math.random() * 0.85,
+        vy: isSpark ? 0.55 + Math.random() * 1.1 : 0.75 + Math.random() * 1.35,
+        angle: Math.random() * Math.PI * 2,
+        spin: (Math.random() - 0.5) * 0.025,
+        tumble: Math.random() * Math.PI * 2,
+        tumbleSpeed: 0.015 + Math.random() * 0.025,
+        swayPhase: Math.random() * Math.PI * 2,
+        swaySpeed: 0.012 + Math.random() * 0.018,
+        alpha: isSpark ? 0.45 + Math.random() * 0.4 : 0.55 + Math.random() * 0.38,
+        pal
+      };
     };
 
     const createParticles = () => {
-      const count = window.innerWidth < 768 ? 14 : 26;
-      particles = Array.from({ length: count }, () => ({
-        x: Math.random() * (width || 1200),
-        y: Math.random() * (height || 800),
-        rx: 4 + Math.random() * 11,
-        ry: 1.5 + Math.random() * 4.5,
-        angle: Math.random() * Math.PI * 2,
-        spin: (Math.random() - 0.5) * 0.02,
-        vx: -0.25 + Math.random() * 0.6,
-        vy: 0.35 + Math.random() * 0.85,
-        color: palette[Math.floor(Math.random() * palette.length)]
-      }));
+      const count = window.innerWidth < 768 ? 16 : 30;
+      particles = Array.from({ length: count }, () => spawnLeaf(true));
+    };
+
+    const drawOrganicLeaf = (p) => {
+      const len = p.size;
+      const wid = p.size * 0.44 * Math.max(0.32, Math.abs(Math.cos(p.tumble)));
+      ctx.save();
+      ctx.globalAlpha = p.alpha;
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.angle);
+
+      const grad = ctx.createLinearGradient(-len, 0, len, 0);
+      grad.addColorStop(0, p.pal.edge);
+      grad.addColorStop(0.55, p.pal.mid);
+      grad.addColorStop(1, p.pal.tip);
+
+      ctx.beginPath();
+      ctx.moveTo(-len, 0);
+      ctx.quadraticCurveTo(0, -wid, len, 0);
+      ctx.quadraticCurveTo(0, wid, -len, 0);
+      ctx.closePath();
+      ctx.fillStyle = grad;
+      ctx.shadowBlur = 12;
+      ctx.shadowColor = 'rgba(255, 92, 24, 0.32)';
+      ctx.fill();
+
+      // Subtle golden central midrib vein
+      ctx.beginPath();
+      ctx.moveTo(-len * 0.85, 0);
+      ctx.lineTo(len * 0.85, 0);
+      ctx.strokeStyle = 'rgba(255, 224, 150, 0.28)';
+      ctx.lineWidth = 0.7;
+      ctx.stroke();
+      ctx.restore();
     };
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);
       for (const p of particles) {
-        p.x += p.vx;
+        p.swayPhase += p.swaySpeed;
+        p.x += p.vx + Math.sin(p.swayPhase) * 0.42;
         p.y += p.vy;
         p.angle += p.spin;
-        if (p.y > height + 30) { p.y = -30; p.x = Math.random() * width; }
-        if (p.x > width + 30) p.x = -30;
-        if (p.x < -30) p.x = width + 30;
+        p.tumble += p.tumbleSpeed;
 
-        ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.angle);
-        ctx.beginPath();
-        ctx.ellipse(0, 0, p.rx, p.ry, 0, 0, Math.PI * 2);
-        ctx.fillStyle = p.color;
-        ctx.fill();
-        ctx.restore();
+        if (p.y > height + 40 || p.x > width + 60 || p.x < -60) {
+          Object.assign(p, spawnLeaf(false));
+        }
+
+        if (p.isSpark) {
+          ctx.save();
+          ctx.globalAlpha = p.alpha;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = p.pal.tip;
+          ctx.shadowBlur = 10;
+          ctx.shadowColor = p.pal.mid;
+          ctx.fill();
+          ctx.restore();
+        } else {
+          drawOrganicLeaf(p);
+        }
       }
       animId = requestAnimationFrame(render);
     };
@@ -456,27 +582,33 @@ document.addEventListener('DOMContentLoaded', () => {
     createParticles();
     window.addEventListener('resize', resizeCanvas);
 
-    if ('IntersectionObserver' in window && parentSection) {
-      const pObs = new IntersectionObserver((entries) => {
+    if ('IntersectionObserver' in window && emberZones.length) {
+      const visibleZones = new Set();
+      const zoneObs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting && !animId) {
-            animId = requestAnimationFrame(render);
-          } else if (!entry.isIntersecting && animId) {
-            cancelAnimationFrame(animId);
-            animId = null;
+          if (entry.isIntersecting) {
+            visibleZones.add(entry.target);
+          } else {
+            visibleZones.delete(entry.target);
           }
         });
-      }, { threshold: 0.02 });
-      pObs.observe(parentSection);
-    } else {
-      animId = requestAnimationFrame(render);
+        const shouldRun = visibleZones.size > 0;
+        document.body.classList.toggle('ember-active', shouldRun);
+        if (shouldRun && !animId) {
+          animId = requestAnimationFrame(render);
+        } else if (!shouldRun && animId) {
+          cancelAnimationFrame(animId);
+          animId = null;
+        }
+      }, { threshold: 0.08 });
+      emberZones.forEach(zone => zoneObs.observe(zone));
     }
   }
 
   // 10. SCROLL REVEAL ENTRANCE OBSERVER (Progressive Enhancement)
   const revealEls = document.querySelectorAll('.reveal-up');
   const revealVisible = () => {
-    const cutoff = window.innerHeight * 1.15;
+    const cutoff = window.innerHeight * 0.96;
     revealEls.forEach(el => {
       if (!el.classList.contains('in-view')) {
         const rect = el.getBoundingClientRect();
@@ -498,7 +630,7 @@ document.addEventListener('DOMContentLoaded', () => {
           obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.05 });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
     revealEls.forEach(el => {
       if (!el.classList.contains('in-view')) {

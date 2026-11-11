@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Obsidian Dark Editorial Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=202">
+  <link rel="stylesheet" href="style.css?v=203">
 </head>
 <body>
 
@@ -77,19 +77,25 @@
   <!-- ================= 1. HERO SECTION ================= -->
   <section class="hero-section" id="home">
     <!-- Subtle Concentric Orbital Background Stage -->
-    <div class="hero-orbit-stage" aria-hidden="true">
+    <div class="hero-orbit-stage" id="heroOrbitStage" aria-hidden="true">
       <div class="orbit-ring ring-1"></div>
       <div class="orbit-ring ring-2"></div>
       <div class="orbit-ring ring-3"></div>
-      <span class="orbit-dot dot-lime"></span>
-      <span class="orbit-dot dot-silver-1"></span>
-      <span class="orbit-dot dot-silver-2"></span>
+      <div class="orbit-carrier carrier-lime">
+        <span class="orbit-dot dot-lime"></span>
+      </div>
+      <div class="orbit-carrier carrier-silver-1">
+        <span class="orbit-dot dot-silver-1"></span>
+      </div>
+      <div class="orbit-carrier carrier-silver-2">
+        <span class="orbit-dot dot-silver-2"></span>
+      </div>
     </div>
 
     <div class="hero-canvas">
       <!-- Giant Edge-to-Edge Chrome Typography (Behind Subject Layer) -->
       <div class="hero-wordmark-layer" id="heroWordmarkLayer">
-        <h1 class="chrome-hero-title" aria-label="Portfolio">PORTFOLIO</h1>
+        <h1 class="chrome-hero-title" aria-label="Portfolio"><span class="hero-char-mask" style="--char-i: 0"><span class="hero-char">P</span></span><span class="hero-char-mask" style="--char-i: 1"><span class="hero-char">O</span></span><span class="hero-char-mask" style="--char-i: 2"><span class="hero-char">R</span></span><span class="hero-char-mask" style="--char-i: 3"><span class="hero-char">T</span></span><span class="hero-char-mask" style="--char-i: 4"><span class="hero-char">F</span></span><span class="hero-char-mask" style="--char-i: 5"><span class="hero-char">O</span></span><span class="hero-char-mask" style="--char-i: 6"><span class="hero-char">L</span></span><span class="hero-char-mask" style="--char-i: 7"><span class="hero-char">I</span></span><span class="hero-char-mask" style="--char-i: 8"><span class="hero-char">O</span></span></h1>
       </div>
 
       <!-- Layered Cutout Subject Emerging Center-Stage -->
@@ -274,9 +280,6 @@
 
   <!-- ================= 4. WHAT I CAN DO (INTERACTIVE SERVICES LIST) ================= -->
   <section class="services-section" id="services">
-    <!-- Subtle Ambient Floating Ember/Leaf Particles Canvas (matches kinetic mood) -->
-    <canvas id="ambientParticleCanvas" class="ambient-canvas" aria-hidden="true"></canvas>
-
     <div class="section-wrap relative-z">
       <div class="services-header-row reveal-up">
         <div class="kicker-col">
@@ -293,7 +296,7 @@
       <div class="services-accordion" id="servicesAccordion">
         
         <!-- 01 -->
-        <div class="service-row" data-service>
+        <div class="service-row reveal-up" data-service>
           <button class="service-row-trigger" aria-expanded="false">
             <span class="row-index">01</span>
             <span class="row-title">AI VIDEO PRODUCTION</span>
@@ -312,7 +315,7 @@
         </div>
 
         <!-- 02 -->
-        <div class="service-row" data-service>
+        <div class="service-row reveal-up" data-service>
           <button class="service-row-trigger" aria-expanded="false">
             <span class="row-index">02</span>
             <span class="row-title">AI IMAGE GENERATION</span>
@@ -331,7 +334,7 @@
         </div>
 
         <!-- 03 -->
-        <div class="service-row" data-service>
+        <div class="service-row reveal-up" data-service>
           <button class="service-row-trigger" aria-expanded="false">
             <span class="row-index">03</span>
             <span class="row-title">AI ADVERTISEMENTS</span>
@@ -350,7 +353,7 @@
         </div>
 
         <!-- 04 -->
-        <div class="service-row" data-service>
+        <div class="service-row reveal-up" data-service>
           <button class="service-row-trigger" aria-expanded="false">
             <span class="row-index">04</span>
             <span class="row-title">SOCIAL MEDIA CONTENT CREATION</span>
@@ -369,7 +372,7 @@
         </div>
 
         <!-- 05 -->
-        <div class="service-row" data-service>
+        <div class="service-row reveal-up" data-service>
           <button class="service-row-trigger" aria-expanded="false">
             <span class="row-index">05</span>
             <span class="row-title">META ADS CREATION</span>
@@ -388,7 +391,7 @@
         </div>
 
         <!-- 06 -->
-        <div class="service-row" data-service>
+        <div class="service-row reveal-up" data-service>
           <button class="service-row-trigger" aria-expanded="false">
             <span class="row-index">06</span>
             <span class="row-title">WEBSITE DEVELOPMENT</span>
@@ -832,6 +835,9 @@
     <span class="chat-pill-dot"></span>
   </a>
 
+  <!-- Global Ambient Falling Ember / Autumn Leaf Canvas (active in Services & Selected Work) -->
+  <canvas id="ambientParticleCanvas" class="global-ember-canvas" aria-hidden="true"></canvas>
+
   <!-- ================= DARK GLASS LIGHTBOX MODAL ================= -->
   <div class="dark-modal-backdrop" id="projectModal" aria-hidden="true">
     <div class="dark-modal-dialog">
@@ -872,6 +878,6 @@
   </div>
 
   <!-- Main Interactive Portfolio Script -->
-  <script src="main.js?v=201"></script>
+  <script src="main.js?v=203"></script>
 </body>
 </html>
