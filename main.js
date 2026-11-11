@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 4. HERO & VISION SCROLL/CURSOR DEPTH PARALLAX
+  // 4. HERO & VISION SCROLL/CURSOR DEPTH PARALLAX (Always Active)
   const heroSection = document.getElementById('home');
   const heroOrbitStage = document.getElementById('heroOrbitStage');
   const heroWordmark = document.getElementById('heroWordmarkLayer');
@@ -86,9 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const visionSection = document.getElementById('vision');
   const visionPreviews = document.querySelectorAll('.floating-preview-card');
   const visionSpheres = document.querySelectorAll('.chrome-sphere');
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (!reducedMotion && heroSection && heroWordmark && heroSubject) {
+  if (heroSection && heroWordmark && heroSubject) {
     let targetMx = 0;
     let targetMy = 0;
     let currentMx = 0;
@@ -165,6 +164,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('scroll', queueParallax, { passive: true });
+    window.addEventListener('resize', queueParallax, { passive: true });
+    window.addEventListener('pageshow', applyParallaxFrame);
     applyParallaxFrame();
   }
 
@@ -223,9 +224,11 @@ document.addEventListener('DOMContentLoaded', () => {
       playBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         if (video.paused) {
+          video.dataset.userPaused = 'false';
           video.play().catch(() => {});
           playBtn.innerHTML = '<i class="fa-solid fa-pause"></i> <span>Pause</span>';
         } else {
+          video.dataset.userPaused = 'true';
           video.pause();
           playBtn.innerHTML = '<i class="fa-solid fa-play"></i> <span>Play</span>';
         }
@@ -468,10 +471,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 9. AMBIENT FALLING EMBER LEAVES & SPARK PARTICLES ACROSS SERVICES / WORK
+  // 9. AMBIENT FALLING EMBER LEAVES & SPARK PARTICLES ACROSS SERVICES / WORK (Always Active)
   const canvas = document.getElementById('ambientParticleCanvas');
   const emberZones = [document.getElementById('services'), document.getElementById('portfolio')].filter(Boolean);
-  if (canvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (canvas) {
     const ctx = canvas.getContext('2d');
     let width = 0;
     let height = 0;
@@ -486,8 +489,15 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const resizeCanvas = () => {
+      const prevW = width;
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
+      if (prevW && particles.length) {
+        const targetCount = width < 768 ? 16 : 30;
+        if (particles.length !== targetCount) {
+          createParticles();
+        }
+      }
     };
 
     const spawnLeaf = (randomY = false) => {
@@ -579,32 +589,82 @@ document.addEventListener('DOMContentLoaded', () => {
       animId = requestAnimationFrame(render);
     };
 
+    const setEmberRunning = (shouldRun) => {
+      document.body.classList.toggle('ember-active', shouldRun);
+      if (shouldRun && !animId) {
+        animId = requestAnimationFrame(render);
+      } else if (!shouldRun && animId) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+    };
+
+    const syncEmberZones = () => {
+      if (!emberZones.length) return;
+      const vh = window.innerHeight || 900;
+      const shouldRun = emberZones.some(zone => {
+        const rect = zone.getBoundingClientRect();
+        const visiblePx = Math.min(rect.bottom, vh) - Math.max(rect.top, 0);
+        return visiblePx >= Math.min(rect.height * 0.14, 180);
+      });
+      setEmberRunning(shouldRun);
+    };
+
     resizeCanvas();
     createParticles();
-    window.addEventListener('resize', resizeCanvas);
-
-    if ('IntersectionObserver' in window && emberZones.length) {
-      const visibleZones = new Set();
-      const zoneObs = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            visibleZones.add(entry.target);
-          } else {
-            visibleZones.delete(entry.target);
-          }
-        });
-        const shouldRun = visibleZones.size > 0;
-        document.body.classList.toggle('ember-active', shouldRun);
-        if (shouldRun && !animId) {
-          animId = requestAnimationFrame(render);
-        } else if (!shouldRun && animId) {
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      syncEmberZones();
+    });
+    window.addEventListener('scroll', syncEmberZones, { passive: true });
+    window.addEventListener('hashchange', () => setTimeout(syncEmberZones, 60));
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        if (animId) {
           cancelAnimationFrame(animId);
           animId = null;
         }
-      }, { threshold: 0.08 });
+      } else {
+        syncEmberZones();
+      }
+    });
+
+    if ('IntersectionObserver' in window && emberZones.length) {
+      const zoneObs = new IntersectionObserver(syncEmberZones, { threshold: 0.01 });
       emberZones.forEach(zone => zoneObs.observe(zone));
     }
+    syncEmberZones();
   }
+
+  // Keep muted ambient preview videos animating cleanly when visible (unless manually paused)
+  const loopVideos = document.querySelectorAll('.floating-preview-card video, .work-video');
+  const ensureVideoPlayback = (video) => {
+    if (!video || video.dataset.userPaused === 'true') return;
+    if (video.paused) {
+      video.muted = true;
+      video.play().catch(() => {});
+    }
+  };
+  if ('IntersectionObserver' in window && loopVideos.length) {
+    const vidObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          ensureVideoPlayback(entry.target);
+        }
+      });
+    }, { threshold: 0.05 });
+    loopVideos.forEach(v => vidObs.observe(v));
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      loopVideos.forEach(v => {
+        const r = v.getBoundingClientRect();
+        if (r.bottom > 0 && r.top < window.innerHeight) {
+          ensureVideoPlayback(v);
+        }
+      });
+    }
+  });
 
   // 10. SCROLL REVEAL ENTRANCE OBSERVER (Progressive Enhancement)
   const revealEls = document.querySelectorAll('.reveal-up');

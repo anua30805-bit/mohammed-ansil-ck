@@ -2222,7 +2222,8 @@ body.ember-active .global-ember-canvas {
   }
 }
 
-/* ================= 14. INTERACTIVE SWAP & REDUCED-MOTION GUARDS ================= */
+/* ================= 14. INTERACTIVE TAB SWAP ANIMATIONS ================= */
+/* NOTE: Reference theme animations are intentionally kept active at all times */
 .engine-stage-grid.tab-swapping .engine-focus-title,
 .engine-stage-grid.tab-swapping .engine-focus-desc,
 .engine-stage-grid.tab-swapping .engine-terminal-card {
@@ -2241,17 +2242,5 @@ body.ember-active .global-ember-canvas {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-  .global-ember-canvas {
-    display: none;
   }
 }
