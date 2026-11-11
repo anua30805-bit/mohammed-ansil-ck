@@ -123,8 +123,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const vRect = visionSection.getBoundingClientRect();
         if (vRect.bottom > -100 && vRect.top < window.innerHeight + 100) {
           const centerOffset = (vRect.top + vRect.height * 0.5 - window.innerHeight * 0.5) / window.innerHeight;
+          const previewSpeeds = [-28, 22, 24, -18];
           visionPreviews.forEach((card, idx) => {
-            const speed = idx === 0 ? -28 : idx === 1 ? 22 : -18;
+            const speed = previewSpeeds[idx % previewSpeeds.length];
             card.style.setProperty('--parallax-y', `${(centerOffset * speed).toFixed(2)}px`);
           });
           visionSpheres.forEach((sphere, idx) => {

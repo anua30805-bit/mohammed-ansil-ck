@@ -1008,7 +1008,7 @@ body.js-anim .reveal-up.in-view {
   width: 90px;
   height: 90px;
   left: -25px;
-  top: 40%;
+  top: 46%;
   animation: floatSlow 6s ease-in-out infinite;
 }
 .sphere-bottom {
@@ -1034,7 +1034,7 @@ body.js-anim .reveal-up.in-view {
   pointer-events: none;
   z-index: 3;
 }
-.orb-1 { width: 12px; height: 12px; left: 20%; bottom: 26%; animation: floatSlow 4.5s ease-in-out infinite; }
+.orb-1 { width: 12px; height: 12px; left: 26%; bottom: 30%; animation: floatSlow 4.5s ease-in-out infinite; }
 .orb-2 { width: 7px; height: 7px; left: 32%; top: 24%; animation: floatSlow 6.5s ease-in-out infinite; }
 
 /* Floating Tilted Preview Cards */
@@ -1054,12 +1054,18 @@ body.js-anim .reveal-up.in-view {
 }
 .preview-left {
   left: 6%;
-  top: 32%;
-  transform: rotate(-7deg);
+  top: 19%;
+  transform: rotate(-6deg);
+}
+.preview-bottom-left {
+  left: 7%;
+  bottom: 14%;
+  width: 215px;
+  transform: rotate(5deg);
 }
 .preview-top-right {
   right: 9%;
-  top: 25%;
+  top: 22%;
   width: 210px;
   transform: rotate(6deg);
 }
