@@ -3,149 +3,687 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohammed Ansil CK — AI Content Creator & Visual Storyteller</title>
-  <meta name="description" content="Official luxury portfolio of Mohammed Ansil CK — AI Content Creator specializing in AI Video Production, Image Generation, AI Commercials, Meta Ads, and Vibe Coding.">
+  <title>ANSIL CK — AI Content Creator &amp; Visual Storyteller</title>
+  <meta name="description" content="Official portfolio of Mohammed Ansil CK — AI Content Creator specializing in AI Video Production, Image Generation, AI Commercials, Meta Ads, and Website Development.">
 
-  <!-- Google Fonts: Bodoni Moda (Variety Display), Playfair Display (Headings), Cinzel, Poppins (Body) -->
+  <!-- Google Fonts: Outfit (Metallic Display), Plus Jakarta Sans (UI & Body), Playfair Display (Italic Editorial Contrast), JetBrains Mono (Tech Specs) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;0,6..96,900;1,6..96,500;1,6..96,700;1,6..96,900&family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Main Luxury Stylesheet (Cream + Brown Aesthetic) -->
-  <link rel="stylesheet" href="style.css?v=119">
+  <!-- Obsidian Dark Editorial Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=202">
 </head>
 <body>
 
-  <!-- ================= LUXURY HEADER & NAVIGATION ================= -->
-  <header class="luxury-header" id="header">
-    <div class="header-container">
-      <a href="#home" class="brand-signature">
-        <span class="brand-monogram">ANSIL</span>
-        <span class="brand-dot">CK</span>
-        <span class="brand-tag">AI CREATOR</span>
+  <!-- ================= FIXED DARK EDITORIAL HEADER ================= -->
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <a href="#home" class="brand-logo" aria-label="Mohammed Ansil CK Home">
+        <span class="brand-avatar-wrap">
+          <img src="assets/ansil-hero-editorial.jpg?v=2" alt="Ansil" class="brand-avatar">
+        </span>
+        <span class="brand-wordmark">ANSIL CK<span class="lime-dot">.</span></span>
       </a>
 
-      <nav class="desktop-nav" id="desktopNav">
-        <a href="#home" class="nav-link active">Home</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#services" class="nav-link">Services</a>
-        <a href="#tools" class="nav-link">Tools</a>
-        <a href="#portfolio" class="nav-link">Portfolio</a>
-        <a href="#contact" class="nav-link">Contact</a>
+      <nav class="desktop-nav" id="desktopNav" aria-label="Primary Navigation">
+        <a href="#home" class="nav-link active">HOME</a>
+        <a href="#about" class="nav-link">ABOUT</a>
+        <a href="#services" class="nav-link">SERVICES</a>
+        <a href="#portfolio" class="nav-link">PROJECTS</a>
+        <a href="#tools" class="nav-link">STACK</a>
+        <a href="#contact" class="nav-link">CONTACT</a>
       </nav>
 
-      <div class="header-actions">
-        <a href="https://wa.me/919207560571?text=Hi%20Mohammed%20Ansil,%20I%20saw%20your%20luxury%20portfolio%20and%20would%20love%20to%20collaborate!" target="_blank" rel="noopener noreferrer" class="btn-header-cta">
-          <i class="fa-brands fa-whatsapp"></i>
-          <span>Let's Talk</span>
-        </a>
-
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
 
-    <!-- Mobile Drawer Navigation -->
-    <div class="mobile-drawer" id="mobileDrawer">
+    <!-- Acid-Lime Scroll Progress Track -->
+    <div class="scroll-progress-track" aria-hidden="true">
+      <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
       <div class="mobile-drawer-header">
-        <span class="brand-monogram">ANSIL CK</span>
+        <span class="brand-wordmark">ANSIL CK<span class="lime-dot">.</span></span>
         <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close Navigation">&times;</button>
       </div>
       <nav class="mobile-nav-links">
-        <a href="#home" class="mobile-nav-link">01 / Home</a>
-        <a href="#about" class="mobile-nav-link">02 / About Me</a>
-        <a href="#services" class="mobile-nav-link">03 / Services</a>
-        <a href="#tools" class="mobile-nav-link">04 / Tools</a>
-        <a href="#portfolio" class="mobile-nav-link">05 / Portfolio</a>
-        <a href="#contact" class="mobile-nav-link">06 / Contact</a>
+        <a href="#home" class="mobile-nav-link">01 / HOME</a>
+        <a href="#about" class="mobile-nav-link">02 / ABOUT ME</a>
+        <a href="#services" class="mobile-nav-link">03 / WHAT I CAN DO</a>
+        <a href="#portfolio" class="mobile-nav-link">04 / SELECTED WORK</a>
+        <a href="#tools" class="mobile-nav-link">05 / CREATIVE STACK</a>
+        <a href="#contact" class="mobile-nav-link">06 / CONTACT</a>
       </nav>
       <div class="mobile-drawer-footer">
-        <a href="https://wa.me/919207560571" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: 100%; text-align: center;">
-          <i class="fa-brands fa-whatsapp"></i> WhatsApp Me
+        <a href="https://wa.me/919207560571?text=Hi%20Mohammed%20Ansil,%20I%20saw%20your%20portfolio%20and%20would%20love%20to%20collaborate!" target="_blank" rel="noopener noreferrer" class="btn-lime-pill" style="width: 100%; justify-content: center;">
+          <span>WhatsApp Me</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </a>
-        <p class="drawer-contact-line"><i class="fa-brands fa-instagram"></i> @_anzziill._</p>
+        <p class="drawer-handle"><i class="fa-brands fa-instagram"></i> @_anzziill._</p>
       </div>
     </div>
   </header>
 
-  <!-- ================= 1. HOME / HERO SECTION ================= -->
+  <!-- ================= 1. HERO SECTION ================= -->
   <section class="hero-section" id="home">
-    <div class="section-container hero-layout">
-      
-      <!-- Left Editorial Column -->
-      <div class="hero-content-col">
-        <!-- Luxury Variety Editorial Typography: PORTFOLIO -->
-        <div class="hero-portfolio-showcase">
-          <div class="portfolio-title-wrapper">
-            <span class="portfolio-bg-watermark" aria-hidden="true">ANSIL</span>
+    <!-- Subtle Concentric Orbital Background Stage -->
+    <div class="hero-orbit-stage" aria-hidden="true">
+      <div class="orbit-ring ring-1"></div>
+      <div class="orbit-ring ring-2"></div>
+      <div class="orbit-ring ring-3"></div>
+      <span class="orbit-dot dot-lime"></span>
+      <span class="orbit-dot dot-silver-1"></span>
+      <span class="orbit-dot dot-silver-2"></span>
+    </div>
 
-            <h1 class="hero-variety-heading" aria-label="Portfolio">
-              <span class="word-split word-p1">PORT</span><span class="word-split word-p2">FOLIO</span>
-            </h1>
+    <div class="hero-canvas">
+      <!-- Giant Edge-to-Edge Chrome Typography (Behind Subject Layer) -->
+      <div class="hero-wordmark-layer" id="heroWordmarkLayer">
+        <h1 class="chrome-hero-title" aria-label="Portfolio">PORTFOLIO</h1>
+      </div>
+
+      <!-- Layered Cutout Subject Emerging Center-Stage -->
+      <div class="hero-subject-layer" id="heroSubjectLayer">
+        <img src="assets/ansil-hero-cutout.png?v=3" alt="Mohammed Ansil CK — AI Content Creator" class="hero-cutout-img">
+      </div>
+
+      <!-- Hero Lower Foreground Bar -->
+      <div class="hero-bottom-bar">
+        <div class="hero-identity-col">
+          <p class="hero-role-title">
+            <strong>AI Content</strong> <em>Creator</em>
+          </p>
+          <p class="hero-role-sub">&amp; Visual Storyteller</p>
+          <div class="hero-availability">
+            <span class="pulse-lime-dot"></span>
+            <span>AVAILABLE FOR COLLABORATIONS</span>
           </div>
         </div>
 
-        <!-- CTA Action Buttons -->
-        <div class="hero-actions-row">
-          <a href="#portfolio" class="btn btn-primary">
-            <span>Explore Portfolio</span>
-            <i class="fa-solid fa-arrow-down-long"></i>
-          </a>
-          <a href="https://wa.me/919207560571?text=Hi%20Mohammed%20Ansil,%20let's%20collaborate%20on%20a%20project!" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-            <i class="fa-brands fa-whatsapp"></i>
-            <span>Let's Collaborate</span>
+        <div class="hero-scroll-cue">
+          <a href="#about" class="scroll-cue-link">
+            <span>SCROLL TO EXPLORE</span>
+            <span class="scroll-arrow-down">&darr;</span>
           </a>
         </div>
 
-        <!-- Metric Badges -->
-        <div class="hero-stats-strip">
-          <div class="stat-pill">
-            <span class="stat-num">06+</span>
-            <span class="stat-label">Creative Services</span>
+        <div class="hero-cta-col">
+          <div class="hero-cta-buttons">
+            <a href="#about" class="circle-outline-btn" aria-label="Scroll to Intro">
+              <span>&#8601;</span>
+            </a>
+            <a href="#contact" class="pill-serif-btn">
+              <span>Contact</span>
+            </a>
           </div>
-          <div class="stat-divider"></div>
-          <div class="stat-pill">
-            <span class="stat-num">07+</span>
-            <span class="stat-label">AI Platforms</span>
+          <a href="#portfolio" class="selected-work-jump">
+            <span>SELECTED WORK</span>
+            <span>&#8599;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 2. INTRO / ABOUT SECTION ================= -->
+  <section class="intro-section" id="about">
+    <div class="section-wrap">
+      <div class="intro-title-row reveal-up">
+        <h2 class="chrome-section-heading intro-heading">Intro</h2>
+      </div>
+
+      <div class="intro-grid">
+        <!-- Left Seamless Dark Editorial Portrait -->
+        <div class="intro-visual-col reveal-up">
+          <div class="intro-portrait-stage">
+            <img src="assets/ansil-hero-editorial.jpg?v=2" alt="Mohammed Ansil CK Studio Portrait" class="intro-portrait-img">
+            <div class="intro-portrait-vignette" aria-hidden="true"></div>
+            <div class="intro-portrait-caption">
+              <span>ANSIL CK / AI CREATOR &amp; VISUAL STORYTELLER</span>
+            </div>
           </div>
-          <div class="stat-divider"></div>
-          <div class="stat-pill">
-            <span class="stat-num">100%</span>
-            <span class="stat-label">Bespoke Direction</span>
+        </div>
+
+        <!-- Right Dark Obsidian Narrative Card -->
+        <div class="intro-card-col reveal-up">
+          <div class="dark-editorial-card">
+            <p class="intro-para">
+              Hey, I'm <strong>Mohammed Ansil CK</strong>. An aspiring <strong>AI Content Creator</strong> passionate about harnessing Artificial Intelligence to transform bold concepts into cinematic, high-retention digital media.
+            </p>
+            <p class="intro-para">
+              I craft across the modern generative stack &mdash; from <strong>AI Video Production</strong> (<strong>Kling AI</strong>, <strong>Google Veo</strong>) and <strong>Image Synthesis</strong> (<strong>Nano Banana</strong>) to high-converting <strong>Meta Ads</strong> and interactive <strong>Website Development</strong>.
+            </p>
+            <p class="intro-para">
+              <strong>Philosophy:</strong> Blending advanced <strong>Prompt Engineering</strong> with sharp editorial storytelling to deliver commercials and brand visuals that capture immediate attention and elevate market recall.
+            </p>
+            <p class="intro-para">
+              <strong>Core Pillars:</strong> Visual Storytelling, High-Retention Ad Strategy, Next-Gen Generative Art, Storyboarding, and Vibe Coding.
+            </p>
+            <p class="intro-para intro-close">
+              Ready to bring an extraordinary concept to life? Let's collaborate on your next visual campaign or brand commercial.
+            </p>
+
+            <div class="intro-card-footer">
+              <a href="https://wa.me/919207560571?text=Hi%20Mohammed%20Ansil,%20I%20would%20love%20to%20start%20a%20creative%20dialogue%20with%20you!" target="_blank" rel="noopener noreferrer" class="inline-action-link">
+                <span>START DIALOGUE</span>
+                <span class="lime-arrow">&#8599;</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Right Visual Column (Luxury Editorial Portrait Card) -->
-      <div class="hero-visual-col">
-        <div class="luxury-portrait-stage" id="heroCardStage">
-          <!-- Ambient Bronze Warm Glow -->
-          <div class="portrait-warm-glow" aria-hidden="true"></div>
+    <!-- Monochrome / Subtle Stack Ticker Strip -->
+    <div class="stack-ticker-band">
+      <div class="stack-ticker-track">
+        <span class="ticker-item"><i class="fa-solid fa-comments"></i> ChatGPT</span>
+        <span class="ticker-item"><i class="fa-solid fa-video"></i> Google Veo</span>
+        <span class="ticker-item"><i class="fa-solid fa-clapperboard"></i> Kling AI</span>
+        <span class="ticker-item"><i class="fa-solid fa-wand-magic-sparkles"></i> Nano Banana</span>
+        <span class="ticker-item"><i class="fa-solid fa-palette"></i> Canva</span>
+        <span class="ticker-item"><i class="fa-solid fa-scissors"></i> CapCut</span>
+        <span class="ticker-item"><i class="fa-brands fa-meta"></i> Meta Ads</span>
+        <span class="ticker-item"><i class="fa-solid fa-laptop-code"></i> Vibe Coding</span>
+        <!-- Seamless Loop Duplicate -->
+        <span class="ticker-item"><i class="fa-solid fa-comments"></i> ChatGPT</span>
+        <span class="ticker-item"><i class="fa-solid fa-video"></i> Google Veo</span>
+        <span class="ticker-item"><i class="fa-solid fa-clapperboard"></i> Kling AI</span>
+        <span class="ticker-item"><i class="fa-solid fa-wand-magic-sparkles"></i> Nano Banana</span>
+        <span class="ticker-item"><i class="fa-solid fa-palette"></i> Canva</span>
+        <span class="ticker-item"><i class="fa-solid fa-scissors"></i> CapCut</span>
+        <span class="ticker-item"><i class="fa-brands fa-meta"></i> Meta Ads</span>
+        <span class="ticker-item"><i class="fa-solid fa-laptop-code"></i> Vibe Coding</span>
+      </div>
+    </div>
+  </section>
 
-          <div class="portrait-card-frame">
-            <img src="assets/ansil-hero-editorial.jpg?v=2" alt="Mohammed Ansil CK — AI Content Creator" class="portrait-img">
-            
-            <!-- Luxury Glass Sheen Overlay -->
-            <div class="portrait-sheen" id="portraitSheen" aria-hidden="true"></div>
+  <!-- ================= 3. IMAGINE ORBITAL SHOWCASE STATEMENT ================= -->
+  <section class="imagine-section" id="vision">
+    <!-- Concentric Orbital Background -->
+    <div class="imagine-orbits" aria-hidden="true">
+      <div class="orbit-ring i-ring-1"></div>
+      <div class="orbit-ring i-ring-2"></div>
+      <div class="orbit-ring i-ring-3"></div>
+    </div>
 
-            <!-- Floating Badge: Status -->
-            <div class="floating-badge badge-top-right">
-              <span class="live-dot"></span>
-              <span>Available for Projects</span>
+    <!-- Top & Bottom Corner Labels -->
+    <div class="imagine-corner corner-tl">IDEAS INTO EXPERIENCES</div>
+    <div class="imagine-corner corner-tr">DIRECTED BY ANSIL CK</div>
+    <div class="imagine-corner corner-bl">&darr; SCROLL TO SEE IT TAKE SHAPE</div>
+    <a href="#portfolio" class="imagine-corner corner-br corner-link">Explore the work &#8599;</a>
+
+    <!-- Floating Metallic 3D Spheres & Glowing Lime Orbs -->
+    <div class="chrome-sphere sphere-left" aria-hidden="true"></div>
+    <div class="chrome-sphere sphere-bottom" aria-hidden="true"></div>
+    <div class="chrome-sphere sphere-right" aria-hidden="true"></div>
+    <span class="stage-lime-orb orb-1" aria-hidden="true"></span>
+    <span class="stage-lime-orb orb-2" aria-hidden="true"></span>
+
+    <!-- Floating Tilted Dark Browser/Studio Cards -->
+    <div class="floating-preview-card preview-left" aria-hidden="true">
+      <div class="mac-bar">
+        <span class="mac-dots"><i></i><i></i><i></i></span>
+        <span class="mac-label">COMMERCIAL</span>
+      </div>
+      <div class="preview-media-wrap">
+        <video src="assets/chocolate-ad-video.mp4" autoplay loop muted playsinline></video>
+      </div>
+      <div class="preview-foot">LUXURY FLUID MOTION</div>
+    </div>
+
+    <div class="floating-preview-card preview-top-right" aria-hidden="true">
+      <div class="mac-bar">
+        <span class="mac-dots"><i></i><i></i><i></i></span>
+        <span class="mac-label">SHOWCASE</span>
+      </div>
+      <div class="preview-media-wrap">
+        <video src="assets/jewelry-ad-video.mp4" autoplay loop muted playsinline></video>
+      </div>
+      <div class="preview-foot">EDITORIAL JEWELRY CAMPAIGN</div>
+    </div>
+
+    <div class="floating-preview-card preview-bottom-right" aria-hidden="true">
+      <div class="mac-bar">
+        <span class="mac-dots"><i></i><i></i><i></i></span>
+        <span class="mac-label">PRODUCTION</span>
+      </div>
+      <div class="preview-media-wrap">
+        <video src="assets/ansil-ai-video.mp4" autoplay loop muted playsinline></video>
+      </div>
+      <div class="preview-foot">HIGH-RETENTION AI REELS</div>
+    </div>
+
+    <!-- Center Bold Typography -->
+    <div class="imagine-center reveal-up">
+      <span class="mono-kicker">01 / A CLEAR DIRECTION</span>
+      <h2 class="imagine-word">IMAGINE.</h2>
+      <p class="imagine-sub">Start with the vision. Direct the impossible.</p>
+    </div>
+  </section>
+
+  <!-- ================= 4. WHAT I CAN DO (INTERACTIVE SERVICES LIST) ================= -->
+  <section class="services-section" id="services">
+    <!-- Subtle Ambient Floating Ember/Leaf Particles Canvas (matches kinetic mood) -->
+    <canvas id="ambientParticleCanvas" class="ambient-canvas" aria-hidden="true"></canvas>
+
+    <div class="section-wrap relative-z">
+      <div class="services-header-row reveal-up">
+        <div class="kicker-col">
+          <span class="mono-kicker">THE TOOLKIT / WHAT I CRAFT</span>
+        </div>
+        <div class="chrome-title-right">
+          <h2 class="chrome-section-heading stacked-heading">
+            <span>WHAT I</span>
+            <span>CAN DO</span>
+          </h2>
+        </div>
+      </div>
+
+      <div class="services-accordion" id="servicesAccordion">
+        
+        <!-- 01 -->
+        <div class="service-row" data-service>
+          <button class="service-row-trigger" aria-expanded="false">
+            <span class="row-index">01</span>
+            <span class="row-title">AI VIDEO PRODUCTION</span>
+            <span class="row-arrow">&#8600;</span>
+          </button>
+          <div class="service-row-panel">
+            <div class="service-panel-inner">
+              <p>Cinematic storytelling, prompt-driven camera choreography, fluid motion physics, and high-retention video production utilizing Kling AI and Google Veo.</p>
+              <div class="service-tags">
+                <span>4K Cinematic Shorts</span>
+                <span>Complex Camera Movements</span>
+                <span>Narrative &amp; Mood Videos</span>
+              </div>
             </div>
+          </div>
+        </div>
 
-            <!-- Floating Badge: Identity Tag -->
-            <div class="floating-badge badge-bottom-left">
-              <span class="badge-icon"><i class="fa-solid fa-sparkles"></i></span>
+        <!-- 02 -->
+        <div class="service-row" data-service>
+          <button class="service-row-trigger" aria-expanded="false">
+            <span class="row-index">02</span>
+            <span class="row-title">AI IMAGE GENERATION</span>
+            <span class="row-arrow">&#8600;</span>
+          </button>
+          <div class="service-row-panel">
+            <div class="service-panel-inner">
+              <p>Photorealistic character design, high-fashion editorial imagery, bespoke product staging, and surreal creative visuals using Nano Banana and generative pipelines.</p>
+              <div class="service-tags">
+                <span>Hyper-Realistic Editorial Stills</span>
+                <span>Character Consistency Workflows</span>
+                <span>Commercial Concept Art</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 -->
+        <div class="service-row" data-service>
+          <button class="service-row-trigger" aria-expanded="false">
+            <span class="row-index">03</span>
+            <span class="row-title">AI ADVERTISEMENTS</span>
+            <span class="row-arrow">&#8600;</span>
+          </button>
+          <div class="service-row-panel">
+            <div class="service-panel-inner">
+              <p>High-converting luxury commercial campaigns, e-commerce promotional spots, dynamic motion ads, and visual hooks engineered to maximize brand recall.</p>
+              <div class="service-tags">
+                <span>Luxury Brand Spec Commercials</span>
+                <span>High-CTR Product Showcase Ads</span>
+                <span>Dynamic Story &amp; Feed Ads</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 -->
+        <div class="service-row" data-service>
+          <button class="service-row-trigger" aria-expanded="false">
+            <span class="row-index">04</span>
+            <span class="row-title">SOCIAL MEDIA CONTENT CREATION</span>
+            <span class="row-arrow">&#8600;</span>
+          </button>
+          <div class="service-row-panel">
+            <div class="service-panel-inner">
+              <p>Viral short-form Reels, visual hooks, YouTube Shorts, and thumb-stopping multi-slide editorial visuals tailored for exponential organic engagement.</p>
+              <div class="service-tags">
+                <span>Viral Reels &amp; Short-Form Hooks</span>
+                <span>Editorial Instagram Visuals</span>
+                <span>Cohesive Brand Visual Identity</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 -->
+        <div class="service-row" data-service>
+          <button class="service-row-trigger" aria-expanded="false">
+            <span class="row-index">05</span>
+            <span class="row-title">META ADS CREATION</span>
+            <span class="row-arrow">&#8600;</span>
+          </button>
+          <div class="service-row-panel">
+            <div class="service-panel-inner">
+              <p>Data-driven visual creatives engineered specifically for Facebook and Instagram ad algorithms to drive lower cost-per-click and stronger ROAS.</p>
+              <div class="service-tags">
+                <span>Direct-Response Ad Variations</span>
+                <span>Scroll-Stopping Hook Visuals</span>
+                <span>A/B Creative Testing Formats</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 06 -->
+        <div class="service-row" data-service>
+          <button class="service-row-trigger" aria-expanded="false">
+            <span class="row-index">06</span>
+            <span class="row-title">WEBSITE DEVELOPMENT</span>
+            <span class="row-arrow">&#8600;</span>
+          </button>
+          <div class="service-row-panel">
+            <div class="service-panel-inner">
+              <p>Clean, modern, dark-editorial portfolios and responsive landing pages built with bespoke aesthetic direction, interactive animations, and fast performance.</p>
+              <div class="service-tags">
+                <span>Interactive Creative Portfolios</span>
+                <span>High-Speed Mobile Optimization</span>
+                <span>Vibe Coding &amp; Interactive Web</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 5. SELECTED WORK (ALTERNATING PORTFOLIO) ================= -->
+  <section class="work-section" id="portfolio">
+    <div class="section-wrap">
+      <div class="work-header reveal-up">
+        <div class="work-header-left">
+          <span class="mono-kicker">A SELECTION OF WHAT I CREATE</span>
+          <h2 class="chrome-section-heading work-heading">SELECTED WORK.</h2>
+        </div>
+        <div class="work-header-right">
+          <p class="work-intro-sub">From bespoke AI commercials to high-retention visual storytelling. Concepts, directed into memorable campaigns.</p>
+        </div>
+      </div>
+
+      <!-- Dark Filter Pills -->
+      <div class="portfolio-filter-nav reveal-up" role="tablist" aria-label="Filter Portfolio Productions">
+        <button class="filter-btn active" data-filter="all">All Works</button>
+        <button class="filter-btn" data-filter="ad">AI Advertisements</button>
+        <button class="filter-btn" data-filter="video">AI Video</button>
+        <button class="filter-btn" data-filter="creative">Creative Projects</button>
+      </div>
+
+      <!-- Alternating Case Showcase Items -->
+      <div class="work-showcase-list" id="portfolioGrid">
+
+        <!-- Project 01 -->
+        <article class="work-item project-card reveal-up"
+          data-category="ad"
+          data-title="Luxury Chocolate Commercial"
+          data-tag="AI Advertisements &bull; 4K Motion"
+          data-desc="High-end commercial advertisement directed by Mohammed Ansil CK. Engineered with sensory micro-camera glides, fluid organic chocolate physics, rich textures, and dramatic cinematic lighting designed for luxury confectionery and brand campaigns."
+          data-tools="Midjourney, Kling AI, CapCut"
+          data-video="assets/chocolate-ad-video.mp4">
+          
+          <div class="work-media-col">
+            <div class="work-media-frame" data-tilt>
+              <div class="work-media-topbar">STUDIO ARCHIVE: ANSIL CK // COMMERCIAL REEL 01</div>
+              <video src="assets/chocolate-ad-video.mp4" autoplay loop muted playsinline class="work-video project-thumb-video"></video>
+              <div class="work-video-controls">
+                <button type="button" class="vid-ctrl-pill toggle-play" aria-label="Pause or play preview">
+                  <i class="fa-solid fa-pause"></i> <span>Pause</span>
+                </button>
+                <button type="button" class="vid-ctrl-pill toggle-mute" aria-label="Toggle sound">
+                  <i class="fa-solid fa-volume-xmark"></i> <span>Sound off</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-info-col">
+            <span class="work-num">01.</span>
+            <h3 class="work-title">LUXURY CHOCOLATE COMMERCIAL</h3>
+            <p class="work-tagline">Sensory brand storytelling with rich fluid physics.</p>
+            <p class="work-summary">
+              High-end commercial spot engineered with sensory micro-camera glides, rich organic chocolate textures, dramatic chiaroscuro studio lighting, and synchronized audio pacing designed for premium confectionery campaigns.
+            </p>
+            <div class="work-actions">
+              <button type="button" class="btn-lime-pill btn-quick-view">
+                <span>Watch Full Video</span>
+                <span>&#8599;</span>
+              </button>
+            </div>
+            <div class="work-details-accordion">
+              <button type="button" class="details-toggle-btn" aria-expanded="false">
+                <span>Tools &amp; project details</span>
+                <span class="plus-sign">+</span>
+              </button>
+              <div class="details-drawer">
+                <div class="details-chips">
+                  <span>Kling AI</span>
+                  <span>Nano Banana</span>
+                  <span>CapCut</span>
+                  <span>4K 60fps Grade</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 02 (Reversed Row on Desktop) -->
+        <article class="work-item work-item-reverse project-card reveal-up"
+          data-category="video"
+          data-title="Cinematic AI Video Production"
+          data-tag="AI Video Production &bull; Featured Motion"
+          data-desc="High-retention cinematic video production directed by Mohammed Ansil CK. Engineered with advanced prompt choreography, fluid physics simulation, cinematic camera movement, and synchronized audio pacing."
+          data-tools="Kling AI, Google Veo, CapCut"
+          data-video="assets/ansil-ai-video.mp4">
+
+          <div class="work-media-col">
+            <div class="work-media-frame" data-tilt>
+              <div class="work-media-topbar">PRODUCTION: AI MOTION DIRECTION // REEL 02</div>
+              <video src="assets/ansil-ai-video.mp4" autoplay loop muted playsinline class="work-video project-thumb-video"></video>
+              <div class="work-video-controls">
+                <button type="button" class="vid-ctrl-pill toggle-play" aria-label="Pause or play preview">
+                  <i class="fa-solid fa-pause"></i> <span>Pause</span>
+                </button>
+                <button type="button" class="vid-ctrl-pill toggle-mute" aria-label="Toggle sound">
+                  <i class="fa-solid fa-volume-xmark"></i> <span>Sound off</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-info-col">
+            <span class="work-num">02.</span>
+            <h3 class="work-title">CINEMATIC AI VIDEO PRODUCTION</h3>
+            <p class="work-tagline">Prompt-driven choreography meets narrative depth.</p>
+            <p class="work-summary">
+              Official high-retention video production featuring dynamic camera choreography, atmospheric depth, seamless temporal continuity, and viral short-form pacing across modern social algorithms.
+            </p>
+            <div class="work-actions">
+              <button type="button" class="btn-lime-pill btn-quick-view">
+                <span>Watch Full Video</span>
+                <span>&#8599;</span>
+              </button>
+            </div>
+            <div class="work-details-accordion">
+              <button type="button" class="details-toggle-btn" aria-expanded="false">
+                <span>Tools &amp; project details</span>
+                <span class="plus-sign">+</span>
+              </button>
+              <div class="details-drawer">
+                <div class="details-chips">
+                  <span>Google Veo</span>
+                  <span>Kling AI</span>
+                  <span>ChatGPT Prompting</span>
+                  <span>CapCut Pro</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 03 -->
+        <article class="work-item project-card reveal-up"
+          data-category="creative"
+          data-title="Haute Joaillerie: Luxury Jewelry"
+          data-tag="Creative Projects &bull; Luxury Commercial"
+          data-desc="High-fashion visual showcase directed by Mohammed Ansil CK. Capturing the refined elegance of a luxury diamond jewelry set with photorealistic crystal refractions, fluid model motion, and soft editorial cinematic lighting."
+          data-tools="Midjourney, Kling AI, CapCut"
+          data-video="assets/jewelry-ad-video.mp4">
+
+          <div class="work-media-col">
+            <div class="work-media-frame" data-tilt>
+              <div class="work-media-topbar">HAUTE JOAILLERIE: EDITORIAL CAMPAIGN // REEL 03</div>
+              <video src="assets/jewelry-ad-video.mp4" autoplay loop muted playsinline class="work-video project-thumb-video"></video>
+              <div class="work-video-controls">
+                <button type="button" class="vid-ctrl-pill toggle-play" aria-label="Pause or play preview">
+                  <i class="fa-solid fa-pause"></i> <span>Pause</span>
+                </button>
+                <button type="button" class="vid-ctrl-pill toggle-mute" aria-label="Toggle sound">
+                  <i class="fa-solid fa-volume-xmark"></i> <span>Sound off</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-info-col">
+            <span class="work-num">03.</span>
+            <h3 class="work-title">HAUTE JOAILLERIE: LUXURY JEWELRY</h3>
+            <p class="work-tagline">High-fashion crystal refraction &amp; editorial motion.</p>
+            <p class="work-summary">
+              High-fashion jewelry campaign capturing crisp diamond brilliance, graceful subject movement, velvety depth-of-field, and bespoke luxury color grading designed for high-ticket jewellery houses.
+            </p>
+            <div class="work-actions">
+              <button type="button" class="btn-lime-pill btn-quick-view">
+                <span>Watch Full Video</span>
+                <span>&#8599;</span>
+              </button>
+            </div>
+            <div class="work-details-accordion">
+              <button type="button" class="details-toggle-btn" aria-expanded="false">
+                <span>Tools &amp; project details</span>
+                <span class="plus-sign">+</span>
+              </button>
+              <div class="details-drawer">
+                <div class="details-chips">
+                  <span>Nano Banana</span>
+                  <span>Kling AI</span>
+                  <span>Canva</span>
+                  <span>Color Grading</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 6. INSIDE THE CREATIVE ENGINE (INTERACTIVE STACK TABS) ================= -->
+  <section class="engine-section" id="tools">
+    <div class="section-wrap">
+      <div class="engine-header-row reveal-up">
+        <div class="engine-header-left">
+          <span class="mono-kicker">MASTERED ECOSYSTEM / AI STACK</span>
+          <h2 class="chrome-section-heading stacked-heading-left">
+            <span>INSIDE THE</span>
+            <span>CREATIVE ENGINE.</span>
+          </h2>
+        </div>
+        <div class="engine-header-right">
+          <p>The neural engines, prompting frameworks, and editing tools powering every frame I direct.</p>
+        </div>
+      </div>
+
+      <!-- 4 Interactive Engine Tabs -->
+      <div class="engine-tabs-nav reveal-up" role="tablist">
+        <button class="engine-tab active" data-tab="video" role="tab" aria-selected="true">Video Synthesis Engine</button>
+        <button class="engine-tab" data-tab="prompt" role="tab" aria-selected="false">Prompt &amp; Scripting</button>
+        <button class="engine-tab" data-tab="image" role="tab" aria-selected="false">Generative Imagery</button>
+        <button class="engine-tab" data-tab="design" role="tab" aria-selected="false">Post &amp; Editorial Design</button>
+      </div>
+
+      <!-- Tab Content Container -->
+      <div class="engine-stage-grid reveal-up" id="engineStage">
+        <div class="engine-specs-col">
+          <span class="mono-kicker" id="engineKicker">01 / MOTION &amp; CINEMATOGRAPHY</span>
+          <h3 class="engine-focus-title" id="engineTitle">GOOGLE VEO &amp; KLING AI VIDEO ENGINE</h3>
+          <p class="engine-focus-desc" id="engineDesc">
+            Orchestrating Hollywood-grade camera movement, realistic fluid &amp; fabric physics, and seamless temporal continuity across 4K commercial spots.
+          </p>
+
+          <div class="engine-spec-list" id="engineSpecList">
+            <div class="spec-row">
               <div>
-                <strong>Mohammed Ansil CK</strong>
-                <small>AI Content Creator</small>
+                <strong>Google Veo</strong>
+                <small>Physics fidelity &amp; 1080p–4K lighting consistency</small>
+              </div>
+              <span class="spec-meta">Primary Motion</span>
+            </div>
+            <div class="spec-row">
+              <div>
+                <strong>Kling AI</strong>
+                <small>Complex human expressions &amp; camera choreography</small>
+              </div>
+              <span class="spec-meta">Cinema Dynamics</span>
+            </div>
+            <div class="spec-row">
+              <div>
+                <strong>Seed &amp; Temporal Lock</strong>
+                <small>Frame-accurate continuity across multi-cut commercials</small>
+              </div>
+              <span class="spec-meta">Scene Coherence</span>
+            </div>
+            <div class="spec-row">
+              <div>
+                <strong>Commercial Pacing</strong>
+                <small>Hook optimization for first-3-second scroll retention</small>
+              </div>
+              <span class="spec-meta">ROAS Tuned</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="engine-terminal-col">
+          <div class="engine-terminal-card">
+            <div class="terminal-top">
+              <span class="terminal-cmd">&gt; WORKFLOW TELEMETRY</span>
+              <span class="terminal-step" id="engineStepCounter">01 / 04</span>
+            </div>
+            <div class="terminal-visual">
+              <div class="terminal-visual-badge" id="engineVisualBadge">
+                <i class="fa-solid fa-film" id="engineVisualIcon"></i>
+              </div>
+              <span class="terminal-core-label" id="engineCoreLabel">ANSIL / VIDEO CORE</span>
+            </div>
+            <div class="terminal-console">
+              <div class="console-confidence" id="engineMetricLine">99.2% TEMPORAL STABILITY</div>
+              <div class="console-prompt" id="enginePromptLine">&gt; Direct macro luxury shot, slow dolly-in, golden chiaroscuro lighting</div>
+              <div class="console-tags" id="engineTagsRow">
+                <span>[ENGINE: KLING AI + VEO]</span>
+                <span>[ASPECT: 16:9 / 9:16]</span>
+                <span>[OUTPUT: STUDIO GRADE]</span>
               </div>
             </div>
           </div>
@@ -153,570 +691,187 @@
       </div>
 
     </div>
-
-    <!-- Editorial Marquee Ticker -->
-    <div class="luxury-ticker">
-      <div class="ticker-content">
-        <span>AI VIDEO PRODUCTION</span>
-        <span class="ticker-diamond">◆</span>
-        <span>AI IMAGE GENERATION</span>
-        <span class="ticker-diamond">◆</span>
-        <span>AI ADVERTISEMENTS</span>
-        <span class="ticker-diamond">◆</span>
-        <span>META ADS CREATION</span>
-        <span class="ticker-diamond">◆</span>
-        <span>PROMPT ENGINEERING</span>
-        <span class="ticker-diamond">◆</span>
-        <span>WEBSITE DEVELOPMENT</span>
-        <span class="ticker-diamond">◆</span>
-        <!-- Repeated for seamless loop -->
-        <span>AI VIDEO PRODUCTION</span>
-        <span class="ticker-diamond">◆</span>
-        <span>AI IMAGE GENERATION</span>
-        <span class="ticker-diamond">◆</span>
-        <span>AI ADVERTISEMENTS</span>
-        <span class="ticker-diamond">◆</span>
-        <span>META ADS CREATION</span>
-        <span class="ticker-diamond">◆</span>
-        <span>PROMPT ENGINEERING</span>
-        <span class="ticker-diamond">◆</span>
-        <span>WEBSITE DEVELOPMENT</span>
-        <span class="ticker-diamond">◆</span>
-      </div>
-    </div>
   </section>
 
-  <!-- ================= 2. ABOUT ME SECTION ================= -->
-  <section class="about-section" id="about">
-    <div class="section-container">
-      
-      <div class="section-header-centered">
-        <h2 class="about-main-title">About Me</h2>
+  <!-- ================= 7. THE JOURNEY (MILESTONES & EDGE) ================= -->
+  <section class="journey-section" id="journey">
+    <div class="section-wrap">
+      <div class="journey-header reveal-up">
+        <span class="mono-kicker">CREATING / DIRECTING / SHIPPING</span>
+        <h2 class="chrome-section-heading journey-heading">THE JOURNEY.</h2>
       </div>
 
-      <div class="about-grid-layout">
+      <div class="journey-list">
         
-        <!-- Left Column: Story Card & Quotes -->
-        <div class="about-narrative-card">
-          <h3 class="narrative-heading">Hi, I'm Mohammed Ansil CK</h3>
-          <p class="narrative-lead">
-            An aspiring AI Content Creator passionate about harnessing the power of Artificial Intelligence to transform creative concepts into high-engagement digital media.
-          </p>
-          <p class="narrative-body">
-            I specialize in AI-powered video production, image synthesis, visual storytelling, social media content, and high-conversion advertisement creation. By blending advanced prompt engineering with sharp cinematic sensibilities, I craft visuals that help brands and businesses make an unforgettable impact.
-          </p>
-
-          <!-- Editorial Pull Quote -->
-          <blockquote class="luxury-quote">
-            <span class="quote-mark">“</span>
-            <p>I believe that creativity has no limits when combined with AI. I’m always excited to learn, experiment, collaborate, and turn new ideas into reality.</p>
-            <cite>— Mohammed Ansil CK</cite>
-          </blockquote>
-
-          <div class="about-core-skills">
-            <span class="skill-tag"><i class="fa-solid fa-check"></i> AI Video Direction</span>
-            <span class="skill-tag"><i class="fa-solid fa-check"></i> Prompt Architecture</span>
-            <span class="skill-tag"><i class="fa-solid fa-check"></i> Meta Ads Strategy</span>
-            <span class="skill-tag"><i class="fa-solid fa-check"></i> Generative Art</span>
-            <span class="skill-tag"><i class="fa-solid fa-check"></i> Web Development</span>
-            <span class="skill-tag"><i class="fa-solid fa-check"></i> Viral Storyboarding</span>
+        <a href="#portfolio" class="journey-row reveal-up">
+          <div class="journey-year-col">
+            <span class="journey-year">2026</span>
+            <span class="journey-idx">/ 01</span>
           </div>
-        </div>
-
-        <!-- Right Column: Visual Journey & Pillars -->
-        <div class="about-pillars-col">
-          <div class="pillar-card">
-            <div class="pillar-number">01</div>
-            <div class="pillar-info">
-              <h4>Visual Storytelling</h4>
-              <p>Translating conceptual scripts into emotionally resonant visual narratives with precise motion and depth.</p>
+          <div class="journey-body-col">
+            <h3 class="journey-title">AI Commercial &amp; Luxury Brand Direction</h3>
+            <p class="journey-desc">
+              Engineered flagship spec campaigns spanning luxury confectionery, couture jewelry, and narrative product cinema with 100% bespoke AI creative direction across 07+ neural platforms.
+            </p>
+            <div class="journey-tags">
+              <span>+ Kling AI</span>
+              <span>+ Google Veo</span>
+              <span>+ Nano Banana</span>
+              <span>+ Luxury Commercials</span>
             </div>
           </div>
-
-          <div class="pillar-card">
-            <div class="pillar-number">02</div>
-            <div class="pillar-info">
-              <h4>High-Retention Ad Strategy</h4>
-              <p>Engineering thumb-stopping visual hooks tailored specifically for Meta, Instagram Reels, and YouTube feeds.</p>
-            </div>
-          </div>
-
-          <div class="pillar-card">
-            <div class="pillar-number">03</div>
-            <div class="pillar-info">
-              <h4>Next-Gen Generative Stack</h4>
-              <p>Continuously experimenting with state-of-the-art diffusion models, video transformers, and neural editing tools.</p>
-            </div>
-          </div>
-
-          <div class="about-action-banner">
-            <div>
-              <h5>Ready to bring your idea to life?</h5>
-              <p>Direct communication via WhatsApp &amp; Instagram.</p>
-            </div>
-            <a href="https://wa.me/919207560571" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-              <span>Start Dialogue</span>
-              <i class="fa-brands fa-whatsapp"></i>
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================= 3. SERVICES SECTION ================= -->
-  <section class="services-section" id="services">
-    <div class="section-container">
-      
-      <div class="section-header-centered">
-        <div class="luxury-kicker">
-          <span class="kicker-line"></span>
-          <span class="kicker-text">03 / CURATED CAPABILITIES</span>
-          <span class="kicker-line"></span>
-        </div>
-        <h2 class="section-title">Specialized AI Creative Services</h2>
-        <p class="section-subtitle">
-          Six core competencies engineered to empower brands, agencies, and creators with next-generation content.
-        </p>
-      </div>
-
-      <div class="services-grid">
-        
-        <!-- Service 01: AI Video Production -->
-        <div class="service-card">
-          <div class="service-top">
-            <span class="service-idx">01</span>
-            <div class="service-icon"><i class="fa-solid fa-film"></i></div>
-          </div>
-          <h3 class="service-title">AI Video Production</h3>
-          <p class="service-desc">
-            Cinematic storytelling, prompt-driven camera choreography, fluid motion physics, and high-retention video production utilizing Kling AI and Google Veo.
-          </p>
-          <ul class="service-deliverables">
-            <li><i class="fa-solid fa-diamond"></i> 4K Cinematic Shorts</li>
-            <li><i class="fa-solid fa-diamond"></i> Complex Camera Movements</li>
-            <li><i class="fa-solid fa-diamond"></i> Narrative &amp; Mood Videos</li>
-          </ul>
-        </div>
-
-        <!-- Service 02: AI Image Generation -->
-        <div class="service-card">
-          <div class="service-top">
-            <span class="service-idx">02</span>
-            <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-          </div>
-          <h3 class="service-title">AI Image Generation</h3>
-          <p class="service-desc">
-            Photorealistic character design, high-fashion editorial imagery, bespoke product staging, and surreal creative visuals using Midjourney &amp; Nano Banana.
-          </p>
-          <ul class="service-deliverables">
-            <li><i class="fa-solid fa-diamond"></i> Hyper-Realistic Editorial Stills</li>
-            <li><i class="fa-solid fa-diamond"></i> Character Consistency Workflows</li>
-            <li><i class="fa-solid fa-diamond"></i> Commercial Concept Art</li>
-          </ul>
-        </div>
-
-        <!-- Service 03: AI Advertisements -->
-        <div class="service-card">
-          <div class="service-top">
-            <span class="service-idx">03</span>
-            <div class="service-icon"><i class="fa-solid fa-bullhorn"></i></div>
-          </div>
-          <h3 class="service-title">AI Advertisements</h3>
-          <p class="service-desc">
-            High-converting luxury commercial campaigns, e-commerce promotional spots, dynamic motion ads, and visual hooks engineered to maximize brand recall.
-          </p>
-          <ul class="service-deliverables">
-            <li><i class="fa-solid fa-diamond"></i> Luxury Brand Spec Commercials</li>
-            <li><i class="fa-solid fa-diamond"></i> High-CTR Product Showcase Ads</li>
-            <li><i class="fa-solid fa-diamond"></i> Dynamic Story &amp; Feed Ads</li>
-          </ul>
-        </div>
-
-        <!-- Service 04: Social Media Content Creation -->
-        <div class="service-card">
-          <div class="service-top">
-            <span class="service-idx">04</span>
-            <div class="service-icon"><i class="fa-brands fa-instagram"></i></div>
-          </div>
-          <h3 class="service-title">Social Media Content Creation</h3>
-          <p class="service-desc">
-            Viral short-form Reels, TikTok visual concepts, YouTube Shorts, and thumb-stopping multi-slide carousels tailored for exponential organic engagement.
-          </p>
-          <ul class="service-deliverables">
-            <li><i class="fa-solid fa-diamond"></i> Viral Reels &amp; Short-Form Hooks</li>
-            <li><i class="fa-solid fa-diamond"></i> Editorial Instagram Carousels</li>
-            <li><i class="fa-solid fa-diamond"></i> Cohesive Brand Visual Identity</li>
-          </ul>
-        </div>
-
-        <!-- Service 05: Meta Ads Creation -->
-        <div class="service-card">
-          <div class="service-top">
-            <span class="service-idx">05</span>
-            <div class="service-icon"><i class="fa-brands fa-meta"></i></div>
-          </div>
-          <h3 class="service-title">Meta Ads Creation</h3>
-          <p class="service-desc">
-            Data-driven visual creatives designed specifically for Facebook and Instagram ad algorithms to drive low cost-per-click and high ROAS conversions.
-          </p>
-          <ul class="service-deliverables">
-            <li><i class="fa-solid fa-diamond"></i> Direct-Response Ad Variations</li>
-            <li><i class="fa-solid fa-diamond"></i> Scroll-Stopping Hook Visuals</li>
-            <li><i class="fa-solid fa-diamond"></i> A/B Creative Testing Formats</li>
-          </ul>
-        </div>
-
-        <!-- Service 06: Website Development -->
-        <div class="service-card">
-          <div class="service-top">
-            <span class="service-idx">06</span>
-            <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
-          </div>
-          <h3 class="service-title">Website Development</h3>
-          <p class="service-desc">
-            Clean, modern, responsive portfolios and landing pages built with tailored aesthetic direction, smooth micro-animations, and seamless user experiences.
-          </p>
-          <ul class="service-deliverables">
-            <li><i class="fa-solid fa-diamond"></i> Luxury Editorial Portfolios</li>
-            <li><i class="fa-solid fa-diamond"></i> High-Speed Mobile Optimization</li>
-            <li><i class="fa-solid fa-diamond"></i> Vibe Coding &amp; Interactive Web</li>
-          </ul>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================= 4. TOOLS SECTION ================= -->
-  <section class="tools-section" id="tools">
-    <div class="section-container">
-      
-      <div class="section-header-centered">
-        <div class="luxury-kicker">
-          <span class="kicker-line"></span>
-          <span class="kicker-text">04 / THE GENERATIVE STACK</span>
-          <span class="kicker-line"></span>
-        </div>
-        <h2 class="section-title">Mastered AI Tools &amp; Ecosystem</h2>
-        <p class="section-subtitle">
-          Expertise across industry-leading neural synthesis engines, prompting frameworks, and editorial design software.
-        </p>
-      </div>
-
-      <div class="tools-grid">
-        
-        <!-- Tool 1: ChatGPT -->
-        <div class="tool-card">
-          <div class="tool-icon-wrap">
-            <i class="fa-solid fa-comments"></i>
-          </div>
-          <div class="tool-badge">Reasoning &amp; Scripting</div>
-          <h3 class="tool-name">ChatGPT</h3>
-          <p class="tool-desc">Advanced commercial prompt engineering, storyboarding, narrative scripting, and structured concept ideation.</p>
-        </div>
-
-        <!-- Tool 2: Nano Banana -->
-        <div class="tool-card">
-          <div class="tool-icon-wrap">
-            <i class="fa-solid fa-wand-magic"></i>
-          </div>
-          <div class="tool-badge">Generative Styling</div>
-          <h3 class="tool-name">Nano Banana</h3>
-          <p class="tool-desc">Cutting-edge generative styling, rapid concept iteration, and innovative prompt-driven image composition.</p>
-        </div>
-
-        <!-- Tool 4: Veo -->
-        <div class="tool-card">
-          <div class="tool-icon-wrap">
-            <i class="fa-solid fa-video"></i>
-          </div>
-          <div class="tool-badge">Google Video AI</div>
-          <h3 class="tool-name">Google Veo</h3>
-          <p class="tool-desc">High-definition generative video with nuanced physics understanding, cinematic continuity, and 1080p outputs.</p>
-        </div>
-
-        <!-- Tool 5: Kling AI -->
-        <div class="tool-card">
-          <div class="tool-icon-wrap">
-            <i class="fa-solid fa-clapperboard"></i>
-          </div>
-          <div class="tool-badge">Cinematic Video Motion</div>
-          <h3 class="tool-name">Kling AI</h3>
-          <p class="tool-desc">Hollywood-standard camera dynamics, hyper-realistic human motion simulation, and seamless temporal coherence.</p>
-        </div>
-
-        <!-- Tool 6: Canva -->
-        <div class="tool-card">
-          <div class="tool-icon-wrap">
-            <i class="fa-solid fa-palette"></i>
-          </div>
-          <div class="tool-badge">Editorial Typography</div>
-          <h3 class="tool-name">Canva</h3>
-          <p class="tool-desc">Professional typography composition, promotional marketing graphics, presentation decks, and brand styling.</p>
-        </div>
-
-        <!-- Tool 7: CapCut -->
-        <div class="tool-card">
-          <div class="tool-icon-wrap">
-            <i class="fa-solid fa-scissors"></i>
-          </div>
-          <div class="tool-badge">Post-Production &amp; Pacing</div>
-          <h3 class="tool-name">CapCut</h3>
-          <p class="tool-desc">Precision rhythm cutting, sound design synchronization, dynamic color grading, and viral social pacing.</p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================= 5. PORTFOLIO / GALLERY SECTION ================= -->
-  <section class="portfolio-section" id="portfolio">
-    <div class="section-container">
-      
-      <div class="section-header-centered">
-        <div class="luxury-kicker">
-          <span class="kicker-line"></span>
-          <span class="kicker-text">05 / SELECTED REPERTOIRE</span>
-          <span class="kicker-line"></span>
-        </div>
-        <h2 class="section-title">Featured Creative Productions</h2>
-        <p class="section-subtitle">
-          Explore curated AI video commercials, hyper-realistic imagery, and high-impact digital campaigns.
-        </p>
-      </div>
-
-      <!-- Filter Tabs -->
-      <div class="portfolio-filter-nav">
-        <button class="filter-btn active" data-filter="all">All Works</button>
-        <button class="filter-btn" data-filter="video">AI Video</button>
-        <button class="filter-btn" data-filter="image">AI Image</button>
-        <button class="filter-btn" data-filter="ad">Advertisements</button>
-        <button class="filter-btn" data-filter="creative">Creative Projects</button>
-      </div>
-
-      <!-- Project Cards Grid -->
-      <div class="portfolio-grid" id="portfolioGrid">
-        
-        <!-- Project 1: AI Chocolate Commercial (User Video) -->
-        <div class="project-card video-card" data-category="ad" data-type="video" data-title="Luxury Chocolate Commercial Campaign" data-tag="AI Advertisements &bull; 4K Motion" data-desc="High-end commercial advertisement directed by Mohammed Ansil CK. Engineered with sensory micro-camera glides, fluid organic chocolate physics, rich textures, and dramatic cinematic lighting designed for luxury confectionery and brand campaigns." data-tools="Midjourney, Kling AI, CapCut" data-video="assets/chocolate-ad-video.mp4">
-          <div class="project-thumb-frame">
-            <video src="assets/chocolate-ad-video.mp4" autoplay loop muted playsinline class="project-thumb-video"></video>
-            <div class="video-play-indicator" aria-label="Video Play Indicator">
-              <i class="fa-solid fa-play"></i>
-            </div>
-            <div class="project-overlay">
-              <span class="overlay-badge"><i class="fa-solid fa-play"></i> AI Advertisement</span>
-              <button class="btn-quick-view" aria-label="Play Full Commercial with Sound"><i class="fa-solid fa-expand"></i> Watch Full Video</button>
-            </div>
-          </div>
-          <div class="project-info">
-            <div class="project-meta-row">
-              <span class="project-category">AI Commercial Ad</span>
-              <span class="project-year">2026</span>
-            </div>
-            <h3 class="project-title">Luxury Chocolate Commercial</h3>
-            <p class="project-summary">Sensory commercial campaign featuring rich fluid chocolate motion, organic textures, and cinematic lighting.</p>
-          </div>
-        </div>
-
-        <!-- Project 2: AI Video Production (User Video) -->
-        <div class="project-card video-card" data-category="video" data-type="video" data-title="Cinematic AI Video Production" data-tag="AI Video Production &bull; Featured Motion" data-desc="High-retention cinematic video production directed by Mohammed Ansil CK. Engineered with advanced prompt choreography, fluid physics simulation, cinematic camera movement, and synchronized audio pacing." data-tools="Kling AI, Google Veo, CapCut" data-video="assets/ansil-ai-video.mp4">
-          <div class="project-thumb-frame">
-            <video src="assets/ansil-ai-video.mp4" autoplay loop muted playsinline class="project-thumb-video"></video>
-            <div class="video-play-indicator" aria-label="Video Play Indicator">
-              <i class="fa-solid fa-play"></i>
-            </div>
-            <div class="project-overlay">
-              <span class="overlay-badge"><i class="fa-solid fa-play"></i> AI Video</span>
-              <button class="btn-quick-view" aria-label="Play Full Video with Sound"><i class="fa-solid fa-expand"></i> Watch Full Video</button>
-            </div>
-          </div>
-          <div class="project-info">
-            <div class="project-meta-row">
-              <span class="project-category">AI Video Production</span>
-              <span class="project-year">2026</span>
-            </div>
-            <h3 class="project-title">Cinematic AI Video Production</h3>
-            <p class="project-summary">Official high-retention video production featuring fluid camera choreography, atmospheric depth, and viral pacing.</p>
-          </div>
-        </div>
-
-        <!-- Project 3: Haute Joaillerie Luxury Video (User Video) -->
-        <div class="project-card video-card" data-category="creative" data-type="video" data-title="Haute Joaillerie: Luxury Jewelry Campaign" data-tag="Creative Projects &bull; Luxury Commercial" data-desc="High-fashion visual showcase directed by Mohammed Ansil CK. Capturing the refined elegance of a luxury diamond jewelry set with photorealistic crystal refractions, fluid model motion, and soft editorial cinematic lighting." data-tools="Midjourney, Kling AI, CapCut" data-video="assets/jewelry-ad-video.mp4">
-          <div class="project-thumb-frame">
-            <video src="assets/jewelry-ad-video.mp4" autoplay loop muted playsinline class="project-thumb-video"></video>
-            <div class="video-play-indicator" aria-label="Video Play Indicator">
-              <i class="fa-solid fa-play"></i>
-            </div>
-            <div class="project-overlay">
-              <span class="overlay-badge"><i class="fa-solid fa-play"></i> Creative Video</span>
-              <button class="btn-quick-view" aria-label="Play Full Showcase with Sound"><i class="fa-solid fa-expand"></i> Watch Full Video</button>
-            </div>
-          </div>
-          <div class="project-info">
-            <div class="project-meta-row">
-              <span class="project-category">Creative Commercial</span>
-              <span class="project-year">2026</span>
-            </div>
-            <h3 class="project-title">Haute Joaillerie: Luxury Jewelry</h3>
-            <p class="project-summary">High-fashion luxury jewelry showcase featuring diamond brilliance, elegant motion, and refined cinematic grading.</p>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================= 6. CONTACT SECTION ================= -->
-  <section class="contact-section" id="contact">
-    <div class="section-container">
-      
-      <div class="section-header-centered">
-        <div class="luxury-kicker">
-          <span class="kicker-line"></span>
-          <span class="kicker-text">06 / GET IN TOUCH</span>
-          <span class="kicker-line"></span>
-        </div>
-        <h2 class="section-title">Let's Build Something Extraordinary.</h2>
-        <p class="section-subtitle">
-          Have an upcoming campaign, brand project, or creative video concept? Reach out directly across any channel below.
-        </p>
-      </div>
-
-      <div class="contact-channels-grid">
-        
-        <!-- WhatsApp Card -->
-        <a href="https://wa.me/919207560571?text=Hi%20Mohammed%20Ansil,%20I%20am%20interested%20in%20working%20with%20you%20on%20an%20AI%20project!" target="_blank" rel="noopener noreferrer" class="channel-card">
-          <div class="channel-icon-wrap"><i class="fa-brands fa-whatsapp"></i></div>
-          <div class="channel-info">
-            <span class="channel-tag">Direct Chat / Instant</span>
-            <h3 class="channel-title">WhatsApp</h3>
-            <p class="channel-value">+91 9207560571</p>
-          </div>
-          <span class="channel-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+          <div class="journey-arrow-col">&#8599;</div>
         </a>
 
-        <!-- Instagram Card -->
-        <a href="https://www.instagram.com/_anzziill._/" target="_blank" rel="noopener noreferrer" class="channel-card">
-          <div class="channel-icon-wrap"><i class="fa-brands fa-instagram"></i></div>
-          <div class="channel-info">
-            <span class="channel-tag">Social Visuals &amp; DMs</span>
-            <h3 class="channel-title">Instagram</h3>
-            <p class="channel-value">@_anzziill._</p>
+        <a href="#services" class="journey-row reveal-up">
+          <div class="journey-year-col">
+            <span class="journey-year">2025</span>
+            <span class="journey-idx">/ 02</span>
           </div>
-          <span class="channel-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+          <div class="journey-body-col">
+            <h3 class="journey-title">High-Retention Meta Ads &amp; Short-Form Visual Strategy</h3>
+            <p class="journey-desc">
+              Built performance-focused Reels, Instagram ad variations, and scroll-stopping hook visuals structured around consumer psychology and rapid rhythm editing in CapCut.
+            </p>
+            <div class="journey-tags">
+              <span>+ Meta Ads</span>
+              <span>+ Viral Hooks</span>
+              <span>+ CapCut Pro</span>
+              <span>+ A/B Variations</span>
+            </div>
+          </div>
+          <div class="journey-arrow-col">&#8599;</div>
         </a>
 
-        <!-- Email Card -->
-        <a href="mailto:anua30805@gmail.com?subject=Project%20Inquiry%20via%20Portfolio" class="channel-card">
-          <div class="channel-icon-wrap"><i class="fa-solid fa-envelope"></i></div>
-          <div class="channel-info">
-            <span class="channel-tag">Formal Business Inquiries</span>
-            <h3 class="channel-title">Email</h3>
-            <p class="channel-value">anua30805@gmail.com</p>
+        <a href="#contact" class="journey-row reveal-up">
+          <div class="journey-year-col">
+            <span class="journey-year">2025</span>
+            <span class="journey-idx">/ 03</span>
           </div>
-          <span class="channel-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+          <div class="journey-body-col">
+            <h3 class="journey-title">Prompt Architecture &amp; Vibe Coding Web Craft</h3>
+            <p class="journey-desc">
+              Unified structured ChatGPT script systems, editorial design in Canva, and modern responsive web development to deliver end-to-end digital brand experiences across 06+ creative disciplines.
+            </p>
+            <div class="journey-tags">
+              <span>+ ChatGPT</span>
+              <span>+ Canva</span>
+              <span>+ Vibe Coding</span>
+              <span>+ Responsive UI</span>
+            </div>
+          </div>
+          <div class="journey-arrow-col">&#8599;</div>
         </a>
 
       </div>
-
     </div>
   </section>
 
-  <!-- ================= LUXURY FOOTER ================= -->
-  <footer class="luxury-footer">
-    <div class="footer-container">
+  <!-- ================= 8. CONTACT & GIGANTIC FOOTER ================= -->
+  <footer class="site-footer" id="contact">
+    <div class="section-wrap">
       
-      <div class="footer-top-row">
-        <div class="footer-brand-col">
-          <a href="#home" class="brand-signature footer-brand">
-            <span class="brand-monogram">ANSIL</span>
-            <span class="brand-dot">CK</span>
+      <div class="footer-top-grid reveal-up">
+        <div class="footer-left-col">
+          <span class="footer-eyebrow">Connect with me</span>
+          <a href="mailto:anua30805@gmail.com?subject=Project%20Inquiry%20via%20Portfolio" class="footer-big-email">
+            anua30805@gmail.com
           </a>
-          <p class="footer-tagline">
-            Mohammed Ansil CK — AI Content Creator specializing in cinematic generative video, hyper-realistic imagery, and high-conversion brand advertisements.
-          </p>
-        </div>
-
-        <div class="footer-nav-col">
-          <span class="footer-heading">NAVIGATION</span>
-          <div class="footer-links">
+          <div class="footer-inline-links">
             <a href="#home">Home</a>
-            <a href="#about">About Me</a>
+            <a href="#about">About</a>
             <a href="#services">Services</a>
-            <a href="#tools">Tools</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#contact">Contact</a>
+            <a href="#portfolio">Projects</a>
           </div>
         </div>
 
-        <div class="footer-social-col">
-          <span class="footer-heading">CONNECT</span>
-          <div class="footer-social-pills">
-            <a href="https://wa.me/919207560571" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-            <a href="https://www.instagram.com/_anzziill._/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i> Instagram</a>
-            <a href="mailto:anua30805@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
-          </div>
+        <div class="footer-right-col">
+          <h3 class="footer-cta-heading">Let's build something.</h3>
+          <p class="footer-cta-sub">Open to brand campaigns and<br>custom AI productions.</p>
+          <a href="https://wa.me/919207560571?text=Hi%20Mohammed%20Ansil,%20I%20am%20interested%20in%20working%20with%20you%20on%20an%20AI%20project!" target="_blank" rel="noopener noreferrer" class="btn-white-pill">
+            <span>Get in touch</span>
+            <span>&#8599;</span>
+          </a>
         </div>
       </div>
 
-      <div class="footer-bottom-row">
-        <p class="copyright-text">
-          &copy; <span id="currentYear">2026</span> Mohammed Ansil CK. All Rights Reserved. Crafted with bespoke luxury direction.
-        </p>
-        <a href="#home" class="back-to-top-btn" aria-label="Back to top">
-          <span>Back to Top</span>
-          <i class="fa-solid fa-arrow-up"></i>
+      <!-- Full-Width Clean Channel Links -->
+      <div class="footer-channels-grid reveal-up">
+        <a href="https://wa.me/919207560571?text=Hi%20Mohammed%20Ansil,%20I%20saw%20your%20portfolio!" target="_blank" rel="noopener noreferrer" class="footer-channel-row">
+          <div>
+            <span class="ch-label">WhatsApp</span>
+            <small class="ch-val">+91 9207560571</small>
+          </div>
+          <span class="ch-arrow">&#8599;</span>
+        </a>
+        <a href="https://www.instagram.com/_anzziill._/" target="_blank" rel="noopener noreferrer" class="footer-channel-row">
+          <div>
+            <span class="ch-label">Instagram</span>
+            <small class="ch-val">@_anzziill._</small>
+          </div>
+          <span class="ch-arrow">&#8599;</span>
         </a>
       </div>
 
+      <div class="footer-meta-bar">
+        <p>&copy; <span id="currentYear">2026</span> Mohammed Ansil CK. All Rights Reserved.</p>
+        <a href="#home" class="back-top-link">Back to top &uarr;</a>
+      </div>
+    </div>
+
+    <!-- Giant Edge-to-Edge Signature Watermark -->
+    <div class="footer-watermark-band" aria-hidden="true">
+      <span class="footer-huge-name">ANSIL CK</span>
     </div>
   </footer>
 
-  <!-- ================= LIGHTBOX MODAL FOR PORTFOLIO ================= -->
-  <div class="luxury-modal-backdrop" id="projectModal" aria-hidden="true">
-    <div class="luxury-modal-container">
-      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close Modal">&times;</button>
-      <div class="modal-content-grid">
-        <div class="modal-image-col">
+  <!-- ================= FLOATING WHATSAPP PILL ================= -->
+  <a href="https://wa.me/919207560571?text=Hi%20Mohammed%20Ansil,%20I%20would%20love%20to%20discuss%20an%20AI%20content%20project!" target="_blank" rel="noopener noreferrer" class="floating-chat-pill" aria-label="Chat with Ansil on WhatsApp">
+    <span class="chat-pill-icon"><i class="fa-brands fa-whatsapp"></i></span>
+    <span class="chat-pill-text">Chat with ANSIL</span>
+    <span class="chat-pill-dot"></span>
+  </a>
+
+  <!-- ================= DARK GLASS LIGHTBOX MODAL ================= -->
+  <div class="dark-modal-backdrop" id="projectModal" aria-hidden="true">
+    <div class="dark-modal-dialog">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close Video Modal">&times;</button>
+      <div class="modal-layout">
+        <div class="modal-media-pane">
           <img src="" alt="Project Preview" id="modalImg" class="modal-main-img">
           <video src="" controls playsinline id="modalVideo" class="modal-main-video" style="display: none;"></video>
         </div>
-        <div class="modal-info-col">
-          <span class="modal-tag" id="modalTag">AI Advertisements</span>
-          <h3 class="modal-title" id="modalTitle">Chronos Haute Horlogerie</h3>
+        <div class="modal-info-pane">
+          <span class="mono-kicker" id="modalTag">AI ADVERTISEMENTS</span>
+          <h3 class="modal-title" id="modalTitle">Project Title</h3>
           <p class="modal-desc" id="modalDesc">Project description goes here.</p>
-          
-          <div class="modal-meta-box">
-            <div class="meta-item">
-              <span class="meta-label">CREATIVE DIRECTION</span>
-              <span class="meta-val">Mohammed Ansil CK</span>
+
+          <div class="modal-specs-box">
+            <div class="modal-spec-row">
+              <span>CREATIVE DIRECTION</span>
+              <strong>Mohammed Ansil CK</strong>
             </div>
-            <div class="meta-item">
-              <span class="meta-label">GENERATIVE TOOLS</span>
-              <span class="meta-val" id="modalTools">Midjourney, Kling AI</span>
+            <div class="modal-spec-row">
+              <span>GENERATIVE TOOLS</span>
+              <strong id="modalTools">Kling AI, CapCut</strong>
             </div>
-            <div class="meta-item">
-              <span class="meta-label">DELIVERABLE</span>
-              <span class="meta-val">4K Cinematic Video &amp; High-Res Stills</span>
+            <div class="modal-spec-row">
+              <span>DELIVERABLE</span>
+              <strong>4K Cinematic Production</strong>
             </div>
           </div>
 
-          <a href="https://wa.me/919207560571?text=Hi%20Mohammed%20Ansil,%20I%20loved%20one%20of%20your%20portfolio%20projects%20and%20want%20something%20similar!" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: 100%; text-align: center;">
-            <i class="fa-brands fa-whatsapp"></i> Commission Similar Production
+          <a href="https://wa.me/919207560571?text=Hi%20Mohammed%20Ansil,%20I%20loved%20one%20of%20your%20portfolio%20projects%20and%20want%20something%20similar!" target="_blank" rel="noopener noreferrer" class="btn-lime-pill" style="width: 100%; justify-content: center;">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>Commission Similar Production</span>
+            <span>&#8599;</span>
           </a>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Main JavaScript File -->
-  <script src="main.js?v=119"></script>
+  <!-- Main Interactive Portfolio Script -->
+  <script src="main.js?v=201"></script>
 </body>
 </html>
