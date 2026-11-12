@@ -4,6 +4,27 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // 0. SYNCHRONIZED HERO REVEAL RELEASE (Guarantees letter sweep & cutout reveal play after phone paint)
+  const releaseHeroPreload = () => {
+    requestAnimationFrame(() => {
+      document.documentElement.classList.remove('hero-preload');
+    });
+  };
+  if (document.documentElement.classList.contains('hero-preload')) {
+    const heroImg = document.querySelector('.hero-cutout-img');
+    const fontsReady = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+    const imgReady = heroImg && !heroImg.complete
+      ? new Promise(res => {
+          heroImg.addEventListener('load', res, { once: true });
+          heroImg.addEventListener('error', res, { once: true });
+        })
+      : Promise.resolve();
+    Promise.race([
+      Promise.all([fontsReady, imgReady]),
+      new Promise(res => setTimeout(res, 280))
+    ]).then(releaseHeroPreload);
+  }
+
   // 1. DYNAMIC COPYRIGHT YEAR
   const yearEl = document.getElementById('currentYear');
   if (yearEl) {
@@ -164,6 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('scroll', queueParallax, { passive: true });
+    window.addEventListener('touchmove', queueParallax, { passive: true });
     window.addEventListener('resize', queueParallax, { passive: true });
     window.addEventListener('pageshow', applyParallaxFrame);
     applyParallaxFrame();
@@ -490,10 +512,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const resizeCanvas = () => {
       const prevW = width;
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       if (prevW && particles.length) {
-        const targetCount = width < 768 ? 16 : 30;
+        const targetCount = width < 768 ? 20 : 30;
         if (particles.length !== targetCount) {
           createParticles();
         }
@@ -522,7 +548,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const createParticles = () => {
-      const count = window.innerWidth < 768 ? 16 : 30;
+      const count = window.innerWidth < 768 ? 20 : 30;
       particles = Array.from({ length: count }, () => spawnLeaf(true));
     };
 
@@ -645,6 +671,14 @@ document.addEventListener('DOMContentLoaded', () => {
       video.play().catch(() => {});
     }
   };
+  const resumeVisibleVideos = () => {
+    loopVideos.forEach(v => {
+      const r = v.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < window.innerHeight) {
+        ensureVideoPlayback(v);
+      }
+    });
+  };
   if ('IntersectionObserver' in window && loopVideos.length) {
     const vidObs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -655,21 +689,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.05 });
     loopVideos.forEach(v => vidObs.observe(v));
   }
+  window.addEventListener('touchstart', resumeVisibleVideos, { once: true, passive: true });
   document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) {
-      loopVideos.forEach(v => {
-        const r = v.getBoundingClientRect();
-        if (r.bottom > 0 && r.top < window.innerHeight) {
-          ensureVideoPlayback(v);
-        }
-      });
-    }
+    if (!document.hidden) resumeVisibleVideos();
   });
 
   // 10. SCROLL REVEAL ENTRANCE OBSERVER (Progressive Enhancement)
   const revealEls = document.querySelectorAll('.reveal-up');
   const revealVisible = () => {
-    const cutoff = window.innerHeight * 0.96;
+    const cutoff = window.innerHeight * 0.92;
     revealEls.forEach(el => {
       if (!el.classList.contains('in-view')) {
         const rect = el.getBoundingClientRect();
@@ -691,7 +719,7 @@ document.addEventListener('DOMContentLoaded', () => {
           obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    }, { threshold: 0.06, rootMargin: '0px 0px -36px 0px' });
 
     revealEls.forEach(el => {
       if (!el.classList.contains('in-view')) {
@@ -700,6 +728,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     window.addEventListener('hashchange', () => setTimeout(revealVisible, 50));
     window.addEventListener('scroll', revealVisible, { passive: true });
+    window.addEventListener('resize', revealVisible, { passive: true });
   } else {
     revealEls.forEach(el => el.classList.add('in-view'));
   }

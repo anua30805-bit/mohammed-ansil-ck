@@ -14,8 +14,14 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+  <!-- Sync hero reveal animations with initial paint on mobile & desktop (failsafe timeout guarantees playback) -->
+  <script>
+    document.documentElement.classList.add('hero-preload');
+    setTimeout(function () { document.documentElement.classList.remove('hero-preload'); }, 700);
+  </script>
+
   <!-- Obsidian Dark Editorial Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=205">
+  <link rel="stylesheet" href="style.css?v=207">
 </head>
 <body>
 
@@ -243,7 +249,7 @@
         <span class="mac-label">COMMERCIAL</span>
       </div>
       <div class="preview-media-wrap">
-        <video src="assets/chocolate-ad-video.mp4" autoplay loop muted playsinline></video>
+        <video src="assets/chocolate-ad-video.mp4" autoplay loop muted playsinline webkit-playsinline="true" preload="metadata"></video>
       </div>
       <div class="preview-foot">LUXURY FLUID MOTION</div>
     </div>
@@ -254,7 +260,7 @@
         <span class="mac-label">HERITAGE</span>
       </div>
       <div class="preview-media-wrap">
-        <video src="assets/bakhoor-heritage-ad.mp4" autoplay loop muted playsinline style="object-position: center 48%;"></video>
+        <video src="assets/bakhoor-heritage-ad.mp4" autoplay loop muted playsinline webkit-playsinline="true" preload="metadata" style="object-position: center 48%;"></video>
       </div>
       <div class="preview-foot">ARABIAN BAKHOOR CINEMA</div>
     </div>
@@ -265,7 +271,7 @@
         <span class="mac-label">SHOWCASE</span>
       </div>
       <div class="preview-media-wrap">
-        <video src="assets/jewelry-ad-video.mp4" autoplay loop muted playsinline></video>
+        <video src="assets/jewelry-ad-video.mp4" autoplay loop muted playsinline webkit-playsinline="true" preload="metadata"></video>
       </div>
       <div class="preview-foot">EDITORIAL JEWELRY CAMPAIGN</div>
     </div>
@@ -276,7 +282,7 @@
         <span class="mac-label">PRODUCTION</span>
       </div>
       <div class="preview-media-wrap">
-        <video src="assets/ansil-ai-video.mp4" autoplay loop muted playsinline></video>
+        <video src="assets/ansil-ai-video.mp4" autoplay loop muted playsinline webkit-playsinline="true" preload="metadata"></video>
       </div>
       <div class="preview-foot">HIGH-RETENTION AI REELS</div>
     </div>
@@ -460,7 +466,7 @@
           <div class="work-media-col">
             <div class="work-media-frame" data-tilt>
               <div class="work-media-topbar">STUDIO ARCHIVE: ANSIL CK // COMMERCIAL REEL 01</div>
-              <video src="assets/chocolate-ad-video.mp4" autoplay loop muted playsinline class="work-video project-thumb-video"></video>
+              <video src="assets/chocolate-ad-video.mp4" autoplay loop muted playsinline webkit-playsinline="true" preload="metadata" class="work-video project-thumb-video"></video>
               <div class="work-video-controls">
                 <button type="button" class="vid-ctrl-pill toggle-play" aria-label="Pause or play preview">
                   <i class="fa-solid fa-pause"></i> <span>Pause</span>
@@ -514,7 +520,7 @@
           <div class="work-media-col">
             <div class="work-media-frame" data-tilt>
               <div class="work-media-topbar">PRODUCTION: AI MOTION DIRECTION // REEL 02</div>
-              <video src="assets/ansil-ai-video.mp4" autoplay loop muted playsinline class="work-video project-thumb-video"></video>
+              <video src="assets/ansil-ai-video.mp4" autoplay loop muted playsinline webkit-playsinline="true" preload="metadata" class="work-video project-thumb-video"></video>
               <div class="work-video-controls">
                 <button type="button" class="vid-ctrl-pill toggle-play" aria-label="Pause or play preview">
                   <i class="fa-solid fa-pause"></i> <span>Pause</span>
@@ -568,7 +574,7 @@
           <div class="work-media-col">
             <div class="work-media-frame" data-tilt>
               <div class="work-media-topbar">HAUTE JOAILLERIE: EDITORIAL CAMPAIGN // REEL 03</div>
-              <video src="assets/jewelry-ad-video.mp4" autoplay loop muted playsinline class="work-video project-thumb-video"></video>
+              <video src="assets/jewelry-ad-video.mp4" autoplay loop muted playsinline webkit-playsinline="true" preload="metadata" class="work-video project-thumb-video"></video>
               <div class="work-video-controls">
                 <button type="button" class="vid-ctrl-pill toggle-play" aria-label="Pause or play preview">
                   <i class="fa-solid fa-pause"></i> <span>Pause</span>
@@ -622,7 +628,7 @@
           <div class="work-media-col">
             <div class="work-media-frame" data-tilt>
               <div class="work-media-topbar">HERITAGE FRAGRANCE: ARABIAN COMMERCIAL // REEL 04</div>
-              <video src="assets/bakhoor-heritage-ad.mp4" autoplay loop muted playsinline class="work-video project-thumb-video" style="object-position: center 48%;"></video>
+              <video src="assets/bakhoor-heritage-ad.mp4" autoplay loop muted playsinline webkit-playsinline="true" preload="metadata" class="work-video project-thumb-video" style="object-position: center 48%;"></video>
               <div class="work-video-controls">
                 <button type="button" class="vid-ctrl-pill toggle-play" aria-label="Pause or play preview">
                   <i class="fa-solid fa-pause"></i> <span>Pause</span>
@@ -943,6 +949,6 @@
   </div>
 
   <!-- Main Interactive Portfolio Script -->
-  <script src="main.js?v=205"></script>
+  <script src="main.js?v=207"></script>
 </body>
 </html>

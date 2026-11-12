@@ -492,8 +492,8 @@ body.js-anim .reveal-up.in-view {
   to { transform: rotate(315deg); }
 }
 @keyframes floatSlow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { transform: translate3d(0, var(--sphere-y, 0px), 0); }
+  50% { transform: translate3d(0, calc(var(--sphere-y, 0px) - 10px), 0); }
 }
 
 .hero-canvas {
@@ -540,6 +540,14 @@ body.js-anim .reveal-up.in-view {
   vertical-align: bottom;
   padding: 0.03em 0.008em;
   margin: 0 -0.008em;
+}
+
+html.hero-preload .hero-char,
+html.hero-preload .hero-cutout-img,
+html.hero-preload .hero-identity-col,
+html.hero-preload .hero-scroll-cue,
+html.hero-preload .hero-cta-col {
+  animation-play-state: paused !important;
 }
 
 .hero-char {
@@ -952,9 +960,9 @@ body.js-anim .reveal-up.in-view {
   justify-content: center;
   pointer-events: none;
 }
-.i-ring-1 { width: 420px; height: 420px; border-color: rgba(255, 255, 255, 0.06); }
-.i-ring-2 { width: 680px; height: 680px; border-color: rgba(255, 255, 255, 0.045); border-style: dashed; }
-.i-ring-3 { width: 980px; height: 980px; border-color: rgba(255, 255, 255, 0.03); }
+.i-ring-1 { width: 420px; height: 420px; border-color: rgba(255, 255, 255, 0.06); animation: ringBreathe 12s ease-in-out infinite; }
+.i-ring-2 { width: 680px; height: 680px; border-color: rgba(255, 255, 255, 0.045); border-style: dashed; animation: orbitSpinSlow 70s linear infinite; }
+.i-ring-3 { width: 980px; height: 980px; border-color: rgba(255, 255, 255, 0.03); animation: orbitSpinReverse 95s linear infinite; }
 
 .imagine-corner {
   position: absolute;
@@ -1001,8 +1009,7 @@ body.js-anim .reveal-up.in-view {
   z-index: 2;
   background: radial-gradient(circle at 32% 28%, #FFFFFF 0%, #B2B6BE 26%, #45484F 62%, #111214 95%);
   box-shadow: inset -8px -12px 24px rgba(0, 0, 0, 0.85), 0 18px 40px rgba(0, 0, 0, 0.7);
-  translate: 0 var(--sphere-y, 0px);
-  will-change: transform, translate;
+  will-change: transform;
 }
 .sphere-left {
   width: 90px;
@@ -1048,31 +1055,31 @@ body.js-anim .reveal-up.in-view {
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(8px);
   z-index: 2;
-  translate: 0 var(--parallax-y, 0px);
-  will-change: transform, translate;
-  transition: transform 0.55s var(--ease-out-expo), border-color 0.35s ease, box-shadow 0.4s ease;
+  transform: translate3d(0, var(--parallax-y, 0px), 0) rotate(var(--card-rot, 0deg));
+  will-change: transform;
+  transition: border-color 0.35s ease, box-shadow 0.4s ease;
 }
 .preview-left {
   left: 6%;
   top: 19%;
-  transform: rotate(-6deg);
+  --card-rot: -6deg;
 }
 .preview-bottom-left {
   left: 7%;
   bottom: 14%;
   width: 215px;
-  transform: rotate(5deg);
+  --card-rot: 5deg;
 }
 .preview-top-right {
   right: 9%;
   top: 22%;
   width: 210px;
-  transform: rotate(6deg);
+  --card-rot: 6deg;
 }
 .preview-bottom-right {
   right: 7%;
   bottom: 16%;
-  transform: rotate(-5deg);
+  --card-rot: -5deg;
 }
 .floating-preview-card:hover {
   border-color: rgba(200, 243, 29, 0.5);
@@ -1182,6 +1189,7 @@ body.ember-active .global-ember-canvas {
   pointer-events: none;
 }
 .service-row:hover::before,
+.service-row:active::before,
 .service-row.open::before {
   transform: scaleX(1);
 }
@@ -1733,7 +1741,8 @@ body.ember-active .global-ember-canvas {
   transition: transform 0.45s var(--ease-out-expo);
   pointer-events: none;
 }
-.journey-row:hover::before {
+.journey-row:hover::before,
+.journey-row:active::before {
   transform: scaleX(1);
 }
 .journey-row:hover {
@@ -2091,8 +2100,12 @@ body.ember-active .global-ember-canvas {
   }
 
   .floating-preview-card {
-    display: none;
+    width: 170px;
   }
+  .preview-left { left: 3%; top: 14%; }
+  .preview-bottom-left { left: 4%; bottom: 13%; width: 162px; }
+  .preview-top-right { right: 3%; top: 16%; width: 162px; }
+  .preview-bottom-right { right: 4%; bottom: 13%; width: 168px; }
 
   .engine-tabs-nav {
     grid-template-columns: repeat(2, 1fr);
@@ -2111,6 +2124,21 @@ body.ember-active .global-ember-canvas {
   .hero-canvas {
     padding-bottom: 5.5rem;
   }
+  .hero-orbit-stage .ring-1,
+  .hero-orbit-stage .carrier-lime {
+    width: 72vw;
+    border-color: rgba(255, 255, 255, 0.065);
+  }
+  .hero-orbit-stage .ring-2,
+  .hero-orbit-stage .carrier-silver-1 {
+    width: 98vw;
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+  .hero-orbit-stage .ring-3,
+  .hero-orbit-stage .carrier-silver-2 {
+    width: 126vw;
+    border-color: rgba(255, 255, 255, 0.035);
+  }
   .hero-wordmark-layer {
     top: 22%;
   }
@@ -2125,6 +2153,52 @@ body.ember-active .global-ember-canvas {
   .hero-cutout-img {
     max-height: 46vh;
   }
+
+  /* Preserve IMAGINE. floating cards, spheres, orbits & non-overlapping labels on phones */
+  .imagine-section {
+    min-height: 88vh;
+    padding: 5.5rem 1rem;
+  }
+  .imagine-word {
+    font-size: clamp(2.85rem, 13.5vw, 4.4rem);
+  }
+  .imagine-sub {
+    font-size: 0.85rem;
+    padding: 0 0.75rem;
+  }
+  .i-ring-1 { width: 260px; height: 260px; border-color: rgba(255, 255, 255, 0.08); }
+  .i-ring-2 { width: 390px; height: 390px; border-color: rgba(255, 255, 255, 0.06); }
+  .i-ring-3 { width: 540px; height: 540px; border-color: rgba(255, 255, 255, 0.04); }
+
+  .floating-preview-card {
+    width: clamp(114px, 31vw, 146px);
+    border-radius: 9px;
+  }
+  .mac-bar { padding: 0.25rem 0.4rem; }
+  .mac-dots { gap: 3px; }
+  .mac-dots i { width: 4px; height: 4px; }
+  .mac-label { font-size: 0.44rem; letter-spacing: 0.08em; }
+  .preview-foot { padding: 0.25rem 0.4rem; font-size: 0.39rem; letter-spacing: 0.04em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  .preview-left { left: 3%; top: 15%; }
+  .preview-top-right { right: 3%; top: 16.5%; width: clamp(112px, 30vw, 142px); }
+  .preview-bottom-left { left: 3%; bottom: 11.5%; width: clamp(112px, 30vw, 142px); }
+  .preview-bottom-right { right: 3%; bottom: 10.5%; width: clamp(114px, 31vw, 146px); }
+
+  .sphere-left { width: 46px; height: 46px; left: -14px; top: 48%; }
+  .sphere-right { width: 44px; height: 44px; right: -12px; bottom: 32%; }
+  .sphere-bottom { width: 32px; height: 32px; left: 46%; bottom: 16%; }
+  .orb-1 { width: 9px; height: 9px; left: 20%; bottom: 32%; }
+  .orb-2 { width: 6px; height: 6px; left: 26%; top: 31%; }
+
+  .imagine-corner {
+    font-size: 0.54rem;
+    letter-spacing: 0.09em;
+  }
+  .corner-tl { top: 4.85rem; left: 1rem; }
+  .corner-tr { top: 4.85rem; right: 1rem; }
+  .corner-bl { bottom: 1.35rem; left: 1rem; max-width: 55%; }
+  .corner-br { bottom: 1.35rem; right: 1rem; }
 
   .hero-bottom-bar {
     grid-template-columns: 1fr;
@@ -2207,6 +2281,10 @@ body.ember-active .global-ember-canvas {
     flex-wrap: nowrap;
     padding-bottom: 0.5rem;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .portfolio-filter-nav::-webkit-scrollbar {
+    display: none;
   }
   .filter-btn {
     white-space: nowrap;
