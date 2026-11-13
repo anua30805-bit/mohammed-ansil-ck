@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
       : Promise.resolve();
     Promise.race([
       Promise.all([fontsReady, imgReady]),
-      new Promise(res => setTimeout(res, 280))
+      new Promise(res => setTimeout(res, 80))
     ]).then(releaseHeroPreload);
   }
 
