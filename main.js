@@ -663,7 +663,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Keep muted ambient preview videos animating cleanly when visible (unless manually paused)
-  const loopVideos = document.querySelectorAll('.floating-preview-card video, .work-video');
+  const loopVideos = document.querySelectorAll('.floating-preview-card video, .work-video, .phone-video');
   const ensureVideoPlayback = (video) => {
     if (!video || video.dataset.userPaused === 'true') return;
     if (video.paused) {
@@ -693,6 +693,91 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('visibilitychange', () => {
     if (!document.hidden) resumeVisibleVideos();
   });
+
+  // 11. PHONE MOCKUP REEL CONTROLS (Vertical Reel Showcase)
+  const phoneCards = document.querySelectorAll('.phone-mockup-card');
+  phoneCards.forEach(card => {
+    const video = card.querySelector('.phone-video');
+    const playBtn = card.querySelector('.reel-toggle-play');
+    const muteBtn = card.querySelector('.reel-toggle-mute');
+
+    if (!video) return;
+
+    if (playBtn) {
+      playBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (video.paused) {
+          video.play();
+          video.dataset.userPaused = 'false';
+          playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+        } else {
+          video.pause();
+          video.dataset.userPaused = 'true';
+          playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+        }
+      });
+    }
+
+    if (muteBtn) {
+      muteBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (video.muted) {
+          // Mute all other phone videos first
+          document.querySelectorAll('.phone-video').forEach(v => {
+            if (v !== video) {
+              v.muted = true;
+              const otherMute = v.closest('.phone-mockup-card')?.querySelector('.reel-toggle-mute');
+              if (otherMute) otherMute.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+            }
+          });
+          video.muted = false;
+          muteBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+        } else {
+          video.muted = true;
+          muteBtn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+        }
+      });
+    }
+  });
+
+  // 12. ANIMATED STAT COUNTERS (Hero [ 2+ ], [ 100+ ], [ 50+ ])
+  const statValues = document.querySelectorAll('.hero-stat-card .stat-value[data-target]');
+  let statsAnimated = false;
+  const runStatCounters = () => {
+    if (statsAnimated) return;
+    statsAnimated = true;
+    statValues.forEach(el => {
+      const target = parseInt(el.getAttribute('data-target'), 10) || 0;
+      const duration = 1400;
+      const startTime = performance.now();
+      const step = (now) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(1, elapsed / duration);
+        const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+        const current = Math.floor(ease * target);
+        el.textContent = `${current}+`;
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = `${target}+`;
+        }
+      };
+      requestAnimationFrame(step);
+    });
+  };
+
+  const heroStatsStack = document.querySelector('.hero-stats-stack');
+  if (heroStatsStack && 'IntersectionObserver' in window) {
+    const statsObs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setTimeout(runStatCounters, 350);
+        statsObs.disconnect();
+      }
+    }, { threshold: 0.15 });
+    statsObs.observe(heroStatsStack);
+  } else {
+    setTimeout(runStatCounters, 700);
+  }
 
   // 10. SCROLL REVEAL ENTRANCE OBSERVER (Progressive Enhancement)
   const revealEls = document.querySelectorAll('.reveal-up');

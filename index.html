@@ -17,11 +17,11 @@
   <!-- Sync hero reveal animations with initial paint on mobile & desktop (failsafe timeout guarantees playback) -->
   <script>
     document.documentElement.classList.add('hero-preload');
-    setTimeout(function () { document.documentElement.classList.remove('hero-preload'); }, 700);
+    setTimeout(function () { document.documentElement.classList.remove('hero-preload'); }, 200);
   </script>
 
   <!-- Obsidian Dark Editorial Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=207">
+  <link rel="stylesheet" href="style.css?v=208">
 </head>
 <body>
 
@@ -39,6 +39,7 @@
         <a href="#home" class="nav-link active">HOME</a>
         <a href="#about" class="nav-link">ABOUT</a>
         <a href="#services" class="nav-link">SERVICES</a>
+        <a href="#reels" class="nav-link">REELS</a>
         <a href="#portfolio" class="nav-link">PROJECTS</a>
         <a href="#tools" class="nav-link">STACK</a>
         <a href="#contact" class="nav-link">CONTACT</a>
@@ -66,9 +67,10 @@
         <a href="#home" class="mobile-nav-link">01 / HOME</a>
         <a href="#about" class="mobile-nav-link">02 / ABOUT ME</a>
         <a href="#services" class="mobile-nav-link">03 / WHAT I CAN DO</a>
-        <a href="#portfolio" class="mobile-nav-link">04 / SELECTED WORK</a>
-        <a href="#tools" class="mobile-nav-link">05 / CREATIVE STACK</a>
-        <a href="#contact" class="mobile-nav-link">06 / CONTACT</a>
+        <a href="#reels" class="mobile-nav-link">04 / REELS SHOWCASE</a>
+        <a href="#portfolio" class="mobile-nav-link">05 / SELECTED WORK</a>
+        <a href="#tools" class="mobile-nav-link">06 / CREATIVE STACK</a>
+        <a href="#contact" class="mobile-nav-link">07 / CONTACT</a>
       </nav>
       <div class="mobile-drawer-footer">
         <a href="https://wa.me/919207560571?text=Hi%20Mohammed%20Ansil,%20I%20saw%20your%20portfolio%20and%20would%20love%20to%20collaborate!" target="_blank" rel="noopener noreferrer" class="btn-lime-pill" style="width: 100%; justify-content: center;">
@@ -99,49 +101,140 @@
     </div>
 
     <div class="hero-canvas">
-      <!-- Giant Edge-to-Edge Chrome Typography (Behind Subject Layer) -->
-      <div class="hero-wordmark-layer" id="heroWordmarkLayer">
-        <h1 class="chrome-hero-title" aria-label="Portfolio"><span class="hero-char-mask" style="--char-i: 0"><span class="hero-char">P</span></span><span class="hero-char-mask" style="--char-i: 1"><span class="hero-char">O</span></span><span class="hero-char-mask" style="--char-i: 2"><span class="hero-char">R</span></span><span class="hero-char-mask" style="--char-i: 3"><span class="hero-char">T</span></span><span class="hero-char-mask" style="--char-i: 4"><span class="hero-char">F</span></span><span class="hero-char-mask" style="--char-i: 5"><span class="hero-char">O</span></span><span class="hero-char-mask" style="--char-i: 6"><span class="hero-char">L</span></span><span class="hero-char-mask" style="--char-i: 7"><span class="hero-char">I</span></span><span class="hero-char-mask" style="--char-i: 8"><span class="hero-char">O</span></span></h1>
+      <!-- Visual Stage: Wordmark & Cutout Portrait -->
+      <div class="hero-visual-stage" id="heroVisualStage">
+        <!-- Giant Edge-to-Edge Chrome Typography with Neon Laser Outline Trace -->
+        <div class="hero-wordmark-layer" id="heroWordmarkLayer">
+          <!-- SVG Traveling Neon Laser Stroke & Chrome Typography -->
+          <svg class="hero-laser-svg" viewBox="0 0 1100 230" preserveAspectRatio="xMidYMid meet" aria-label="Portfolio">
+            <defs>
+              <linearGradient id="chromeTextGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="55%" stop-color="#D9DCE3" />
+                <stop offset="100%" stop-color="#767C88" />
+              </linearGradient>
+              <linearGradient id="laserBeamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#C8F31D" stop-opacity="0" />
+                <stop offset="35%" stop-color="#C8F31D" stop-opacity="0.3" />
+                <stop offset="50%" stop-color="#FFFFFF" stop-opacity="1" />
+                <stop offset="65%" stop-color="#C8F31D" stop-opacity="0.9" />
+                <stop offset="100%" stop-color="#C8F31D" stop-opacity="0" />
+              </linearGradient>
+              <filter id="neonLaserGlow" x="-20%" y="-30%" width="140%" height="160%">
+                <feGaussianBlur stdDeviation="3.5" result="blur1" />
+                <feGaussianBlur stdDeviation="9" result="blur2" />
+                <feMerge>
+                  <feMergeNode in="blur2" />
+                  <feMergeNode in="blur1" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <text x="50%" y="74%" text-anchor="middle" class="svg-laser-base">PORTFOLIO</text>
+            <text x="50%" y="74%" text-anchor="middle" class="svg-laser-fill">PORTFOLIO</text>
+            <text x="50%" y="74%" text-anchor="middle" class="svg-laser-stroke" filter="url(#neonLaserGlow)">PORTFOLIO</text>
+          </svg>
+
+          <!-- Continuous Traveling Laser Spark Head -->
+          <div class="laser-spark-head" aria-hidden="true"></div>
+          <h1 class="visually-hidden">PORTFOLIO</h1>
+        </div>
+
+        <!-- Layered Cutout Subject Emerging Center-Stage with Ambient Lime Backlight Aura -->
+        <div class="hero-subject-layer" id="heroSubjectLayer">
+          <div class="hero-cutout-aura" aria-hidden="true"></div>
+          <img src="assets/ansil-hero-cutout.png?v=3" alt="Mohammed Ansil CK — AI Content Creator" class="hero-cutout-img">
+        </div>
       </div>
 
-      <!-- Layered Cutout Subject Emerging Center-Stage -->
-      <div class="hero-subject-layer" id="heroSubjectLayer">
-        <img src="assets/ansil-hero-cutout.png?v=3" alt="Mohammed Ansil CK — AI Content Creator" class="hero-cutout-img">
-      </div>
-
-      <!-- Hero Lower Foreground Bar -->
-      <div class="hero-bottom-bar">
-        <div class="hero-identity-col">
-          <p class="hero-role-title">
-            <strong>AI Content</strong> <em>Creator</em>
-          </p>
-          <p class="hero-role-sub">&amp; Visual Storyteller</p>
-          <div class="hero-availability">
+      <!-- Hero 3-Column Foreground Composition (Matching Reference Video Layout) -->
+      <div class="hero-stage-grid">
+        <!-- Left Column: Identity & 4 Animated Bullet Badges -->
+        <div class="hero-left-col">
+          <span class="hero-salutation">Hello I'm</span>
+          <h2 class="hero-display-name">MOHAMMED ANSIL CK</h2>
+          <div class="hero-pill-badge">
             <span class="pulse-lime-dot"></span>
-            <span>AVAILABLE FOR COLLABORATIONS</span>
+            <span>AI CONTENT CREATOR</span>
+          </div>
+
+          <ul class="hero-bullet-list">
+            <li class="bullet-item" style="--bullet-i: 0">
+              <span class="bullet-badge"><i class="fa-solid fa-plus"></i></span>
+              <span class="bullet-text">AI Video Production</span>
+            </li>
+            <li class="bullet-item" style="--bullet-i: 1">
+              <span class="bullet-badge"><i class="fa-solid fa-plus"></i></span>
+              <span class="bullet-text">Photorealistic Image Generation</span>
+            </li>
+            <li class="bullet-item" style="--bullet-i: 2">
+              <span class="bullet-badge"><i class="fa-solid fa-plus"></i></span>
+              <span class="bullet-text">Commercial Meta Ads</span>
+            </li>
+            <li class="bullet-item" style="--bullet-i: 3">
+              <span class="bullet-badge"><i class="fa-solid fa-plus"></i></span>
+              <span class="bullet-text">Modern Website Development</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Center Bottom: Scroll Cue Link -->
+        <div class="hero-center-col">
+          <div class="hero-scroll-cue">
+            <a href="#about" class="scroll-cue-link">
+              <span>SCROLL TO EXPLORE</span>
+              <span class="scroll-arrow-down">&darr;</span>
+            </a>
           </div>
         </div>
 
-        <div class="hero-scroll-cue">
-          <a href="#about" class="scroll-cue-link">
-            <span>SCROLL TO EXPLORE</span>
-            <span class="scroll-arrow-down">&darr;</span>
-          </a>
-        </div>
+        <!-- Right Column: Editorial Quote Card & 3 Stacked Stat Counters -->
+        <div class="hero-right-col">
+          <div class="hero-quote-card">
+            <p class="hero-quote-text">&ldquo;Turning ideas into powerful visual <em>EXPERIENCE</em>&rdquo;</p>
+          </div>
 
-        <div class="hero-cta-col">
-          <div class="hero-cta-buttons">
+          <div class="hero-stats-stack">
+            <div class="hero-stat-card" style="--stat-i: 0">
+              <div class="stat-bracket-num">
+                <span class="stat-bracket">[</span>
+                <strong class="stat-value" data-target="2">2+</strong>
+                <span class="stat-bracket">]</span>
+              </div>
+              <span class="stat-caption">YEARS EXPERIENCE</span>
+            </div>
+
+            <div class="hero-stat-card" style="--stat-i: 1">
+              <div class="stat-bracket-num">
+                <span class="stat-bracket">[</span>
+                <strong class="stat-value" data-target="100">100+</strong>
+                <span class="stat-bracket">]</span>
+              </div>
+              <span class="stat-caption">COMMERCIALS SHIPPED</span>
+            </div>
+
+            <div class="hero-stat-card" style="--stat-i: 2">
+              <div class="stat-bracket-num">
+                <span class="stat-bracket">[</span>
+                <strong class="stat-value" data-target="50">50+</strong>
+                <span class="stat-bracket">]</span>
+              </div>
+              <span class="stat-caption">HAPPY CLIENTS</span>
+            </div>
+          </div>
+
+          <div class="hero-cta-group">
             <a href="#about" class="circle-outline-btn" aria-label="Scroll to Intro">
               <span>&#8601;</span>
             </a>
             <a href="#contact" class="pill-serif-btn">
               <span>Contact</span>
             </a>
+            <a href="#reels" class="selected-work-jump">
+              <span>WATCH REELS</span>
+              <span>&#8599;</span>
+            </a>
           </div>
-          <a href="#portfolio" class="selected-work-jump">
-            <span>SELECTED WORK</span>
-            <span>&#8599;</span>
-          </a>
         </div>
       </div>
     </div>
@@ -426,6 +519,106 @@
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 4.5. VERTICAL REEL SHOWCASE (SMARTPHONE MOCKUPS) ================= -->
+  <section class="reels-mockup-section" id="reels">
+    <div class="section-wrap">
+      <div class="reels-header reveal-up">
+        <div class="reels-header-left">
+          <span class="mono-kicker">FEATURED 9:16 COMMERCIAL PRODUCTIONS</span>
+          <h2 class="chrome-section-heading reels-heading">VERTICAL REEL SHOWCASE.</h2>
+        </div>
+        <div class="reels-header-right">
+          <p class="reels-intro-sub">Engineered specifically for high-retention social feeds &amp; Meta ad campaigns. Directed, rendered, and color graded by Mohammed Ansil CK.</p>
+        </div>
+      </div>
+
+      <!-- 3 Sleek Smartphone Mockups Stage (Matching Reference Video 00:14-00:26) -->
+      <div class="phone-mockup-stage reveal-up">
+        <!-- Phone 1 (Left): Bakhoor Heritage Commercial -->
+        <div class="phone-mockup-card phone-card-left" data-tilt>
+          <div class="phone-device-frame">
+            <div class="phone-speaker-bar">
+              <span class="phone-dynamic-island"></span>
+            </div>
+            <div class="phone-screen-container">
+              <video src="assets/bakhoor-heritage-ad.mp4" autoplay loop muted playsinline webkit-playsinline="true" preload="metadata" class="phone-video"></video>
+              <div class="phone-screen-glass"></div>
+              <div class="phone-video-overlay">
+                <span class="phone-tag">COMMERCIAL // PERFUMERY</span>
+                <h4 class="phone-title">Bakhoor Heritage</h4>
+                <p class="phone-desc">Cinematic smoke physics &amp; gold amber studio grade.</p>
+                <div class="phone-ctrl-bar">
+                  <button type="button" class="phone-ctrl-btn reel-toggle-play" aria-label="Toggle Play">
+                    <i class="fa-solid fa-pause"></i>
+                  </button>
+                  <button type="button" class="phone-ctrl-btn reel-toggle-mute" aria-label="Toggle Sound">
+                    <i class="fa-solid fa-volume-xmark"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="phone-chin-indicator"></div>
+          </div>
+        </div>
+
+        <!-- Phone 2 (Center - Hero Phone with Radiant Lime Aura): Cinematic AI Vision -->
+        <div class="phone-mockup-card phone-card-center" data-tilt>
+          <div class="phone-center-aura" aria-hidden="true"></div>
+          <div class="phone-device-frame phone-frame-hero">
+            <div class="phone-speaker-bar">
+              <span class="phone-dynamic-island"></span>
+            </div>
+            <div class="phone-screen-container">
+              <video src="assets/ansil-ai-video.mp4" autoplay loop muted playsinline webkit-playsinline="true" preload="metadata" class="phone-video"></video>
+              <div class="phone-screen-glass"></div>
+              <div class="phone-video-overlay">
+                <span class="phone-tag tag-lime">FEATURED // DIRECTOR'S CUT</span>
+                <h4 class="phone-title">Cinematic AI Vision</h4>
+                <p class="phone-desc">Choreographed camera glides &amp; sensory photorealism.</p>
+                <div class="phone-ctrl-bar">
+                  <button type="button" class="phone-ctrl-btn reel-toggle-play" aria-label="Toggle Play">
+                    <i class="fa-solid fa-pause"></i>
+                  </button>
+                  <button type="button" class="phone-ctrl-btn reel-toggle-mute" aria-label="Toggle Sound">
+                    <i class="fa-solid fa-volume-xmark"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="phone-chin-indicator"></div>
+          </div>
+        </div>
+
+        <!-- Phone 3 (Right): Luxury Chocolate Commercial -->
+        <div class="phone-mockup-card phone-card-right" data-tilt>
+          <div class="phone-device-frame">
+            <div class="phone-speaker-bar">
+              <span class="phone-dynamic-island"></span>
+            </div>
+            <div class="phone-screen-container">
+              <video src="assets/chocolate-ad-video.mp4" autoplay loop muted playsinline webkit-playsinline="true" preload="metadata" class="phone-video"></video>
+              <div class="phone-screen-glass"></div>
+              <div class="phone-video-overlay">
+                <span class="phone-tag">COMMERCIAL // CONFECTIONERY</span>
+                <h4 class="phone-title">Luxury Chocolate</h4>
+                <p class="phone-desc">Organic fluid dynamics &amp; macro confectionery textures.</p>
+                <div class="phone-ctrl-bar">
+                  <button type="button" class="phone-ctrl-btn reel-toggle-play" aria-label="Toggle Play">
+                    <i class="fa-solid fa-pause"></i>
+                  </button>
+                  <button type="button" class="phone-ctrl-btn reel-toggle-mute" aria-label="Toggle Sound">
+                    <i class="fa-solid fa-volume-xmark"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="phone-chin-indicator"></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -841,6 +1034,29 @@
     </div>
   </section>
 
+  <!-- ================= 7.5. OUTRO CALLOUT SECTION (MATCHING REFERENCE VIDEO 00:27-00:31) ================= -->
+  <section class="outro-callout-section" id="callout">
+    <div class="section-wrap">
+      <div class="outro-card-box reveal-up">
+        <div class="outro-bg-glow" aria-hidden="true"></div>
+        <span class="mono-kicker kicker-lime">LET'S CREATE TOGETHER</span>
+        <h2 class="outro-headline">IF YOU'RE LOOKING FOR CONTENT THAT <span class="lime-glow-word">STANDS OUT</span></h2>
+        <p class="outro-sub">Bespoke AI commercials, high-retention video hooks, and photorealistic visual assets engineered for brands that demand excellence.</p>
+        
+        <div class="outro-cta-wrap">
+          <a href="https://wa.me/919207560571?text=Hi%20Mohammed%20Ansil,%20I%20saw%20your%20portfolio%20and%20want%20to%20work%20together!" target="_blank" rel="noopener noreferrer" class="btn-neon-laser-dm" aria-label="Direct Message Mohammed Ansil on WhatsApp for Work">
+            <span class="laser-beam-ring" aria-hidden="true"></span>
+            <span class="dm-btn-inner">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span class="dm-label">DM FOR WORK</span>
+              <span class="dm-arrow">&#8599;</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= 8. CONTACT & GIGANTIC FOOTER ================= -->
   <footer class="site-footer" id="contact">
     <div class="section-wrap">
@@ -949,6 +1165,6 @@
   </div>
 
   <!-- Main Interactive Portfolio Script -->
-  <script src="main.js?v=207"></script>
+  <script src="main.js?v=208"></script>
 </body>
 </html>
