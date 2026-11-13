@@ -219,19 +219,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 6. PORTFOLIO FILTERING, INLINE VIDEO CONTROLS & DETAILS DRAWERS
   const filterBtns = document.querySelectorAll('.filter-btn');
+  const goldFilterBtns = document.querySelectorAll('.gold-filter-btn');
   const workCards = document.querySelectorAll('.project-card');
+  const creativeCards = document.querySelectorAll('.creative-work-card');
+
+  // Unified Filter Handler
+  const applyFilter = (filter) => {
+    workCards.forEach(card => {
+      const category = card.getAttribute('data-category');
+      const visible = filter === 'all' || category === filter;
+      card.style.display = visible ? 'grid' : 'none';
+    });
+    creativeCards.forEach(card => {
+      const category = card.getAttribute('data-category');
+      const visible = filter === 'all' || category === filter;
+      card.style.display = visible ? 'block' : 'none';
+    });
+  };
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
+      goldFilterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const filter = btn.getAttribute('data-filter');
+      applyFilter(filter);
+    });
+  });
 
-      workCards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        const visible = filter === 'all' || category === filter;
-        card.style.display = visible ? 'grid' : 'none';
-      });
+  goldFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      goldFilterBtns.forEach(b => b.classList.remove('active'));
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+      applyFilter(filter);
     });
   });
 
@@ -349,6 +371,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mediaFrame) {
       mediaFrame.addEventListener('click', () => openProjectModal(card));
     }
+  });
+
+  creativeCards.forEach(card => {
+    card.addEventListener('click', () => {
+      openProjectModal(card);
+    });
   });
 
   if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeProjectModal);
@@ -504,10 +532,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let animId = null;
 
     const leafPalettes = [
-      { edge: '#E84214', mid: '#FF7D24', tip: '#FFB636' },
-      { edge: '#C72B12', mid: '#EB5E1B', tip: '#F3942A' },
-      { edge: '#D85814', mid: '#F69D26', tip: '#FFD15C' },
-      { edge: '#9E2312', mid: '#DF4818', tip: '#FF8524' }
+      { edge: '#D8982C', mid: '#F5D061', tip: '#FFE8A3' },
+      { edge: '#C4831B', mid: '#E5B869', tip: '#FFF0B8' },
+      { edge: '#E0A838', mid: '#FBD878', tip: '#FFFFFF' },
+      { edge: '#B87210', mid: '#DDA032', tip: '#FFE08F' }
     ];
 
     const resizeCanvas = () => {
@@ -572,7 +600,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.closePath();
       ctx.fillStyle = grad;
       ctx.shadowBlur = 12;
-      ctx.shadowColor = 'rgba(255, 92, 24, 0.32)';
+      ctx.shadowColor = 'rgba(245, 208, 97, 0.35)';
       ctx.fill();
 
       // Subtle golden central midrib vein
