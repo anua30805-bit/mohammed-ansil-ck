@@ -219,41 +219,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 6. PORTFOLIO FILTERING, INLINE VIDEO CONTROLS & DETAILS DRAWERS
   const filterBtns = document.querySelectorAll('.filter-btn');
-  const goldFilterBtns = document.querySelectorAll('.gold-filter-btn');
   const workCards = document.querySelectorAll('.project-card');
-  const creativeCards = document.querySelectorAll('.creative-work-card');
-
-  // Unified Filter Handler
-  const applyFilter = (filter) => {
-    workCards.forEach(card => {
-      const category = card.getAttribute('data-category');
-      const visible = filter === 'all' || category === filter;
-      card.style.display = visible ? 'grid' : 'none';
-    });
-    creativeCards.forEach(card => {
-      const category = card.getAttribute('data-category');
-      const visible = filter === 'all' || category === filter;
-      card.style.display = visible ? 'block' : 'none';
-    });
-  };
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
-      goldFilterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const filter = btn.getAttribute('data-filter');
-      applyFilter(filter);
-    });
-  });
 
-  goldFilterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      goldFilterBtns.forEach(b => b.classList.remove('active'));
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.getAttribute('data-filter');
-      applyFilter(filter);
+      workCards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        const visible = filter === 'all' || category === filter;
+        card.style.display = visible ? 'grid' : 'none';
+      });
     });
   });
 
@@ -371,12 +349,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mediaFrame) {
       mediaFrame.addEventListener('click', () => openProjectModal(card));
     }
-  });
-
-  creativeCards.forEach(card => {
-    card.addEventListener('click', () => {
-      openProjectModal(card);
-    });
   });
 
   if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeProjectModal);
@@ -532,10 +504,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let animId = null;
 
     const leafPalettes = [
-      { edge: '#D8982C', mid: '#F5D061', tip: '#FFE8A3' },
-      { edge: '#C4831B', mid: '#E5B869', tip: '#FFF0B8' },
-      { edge: '#E0A838', mid: '#FBD878', tip: '#FFFFFF' },
-      { edge: '#B87210', mid: '#DDA032', tip: '#FFE08F' }
+      { edge: '#E84214', mid: '#FF7D24', tip: '#FFB636' },
+      { edge: '#C72B12', mid: '#EB5E1B', tip: '#F3942A' },
+      { edge: '#D85814', mid: '#F69D26', tip: '#FFD15C' },
+      { edge: '#9E2312', mid: '#DF4818', tip: '#FF8524' }
     ];
 
     const resizeCanvas = () => {
@@ -600,7 +572,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.closePath();
       ctx.fillStyle = grad;
       ctx.shadowBlur = 12;
-      ctx.shadowColor = 'rgba(245, 208, 97, 0.35)';
+      ctx.shadowColor = 'rgba(255, 92, 24, 0.32)';
       ctx.fill();
 
       // Subtle golden central midrib vein
@@ -691,7 +663,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Keep muted ambient preview videos animating cleanly when visible (unless manually paused)
-  const loopVideos = document.querySelectorAll('.floating-preview-card video, .work-video, .phone-video');
+  const loopVideos = document.querySelectorAll('.floating-preview-card video, .work-video');
   const ensureVideoPlayback = (video) => {
     if (!video || video.dataset.userPaused === 'true') return;
     if (video.paused) {
@@ -721,91 +693,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('visibilitychange', () => {
     if (!document.hidden) resumeVisibleVideos();
   });
-
-  // 11. PHONE MOCKUP REEL CONTROLS (Vertical Reel Showcase)
-  const phoneCards = document.querySelectorAll('.phone-mockup-card');
-  phoneCards.forEach(card => {
-    const video = card.querySelector('.phone-video');
-    const playBtn = card.querySelector('.reel-toggle-play');
-    const muteBtn = card.querySelector('.reel-toggle-mute');
-
-    if (!video) return;
-
-    if (playBtn) {
-      playBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (video.paused) {
-          video.play();
-          video.dataset.userPaused = 'false';
-          playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
-        } else {
-          video.pause();
-          video.dataset.userPaused = 'true';
-          playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
-        }
-      });
-    }
-
-    if (muteBtn) {
-      muteBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (video.muted) {
-          // Mute all other phone videos first
-          document.querySelectorAll('.phone-video').forEach(v => {
-            if (v !== video) {
-              v.muted = true;
-              const otherMute = v.closest('.phone-mockup-card')?.querySelector('.reel-toggle-mute');
-              if (otherMute) otherMute.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
-            }
-          });
-          video.muted = false;
-          muteBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
-        } else {
-          video.muted = true;
-          muteBtn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
-        }
-      });
-    }
-  });
-
-  // 12. ANIMATED STAT COUNTERS (Hero [ 2+ ], [ 100+ ], [ 50+ ])
-  const statValues = document.querySelectorAll('.hero-stat-card .stat-value[data-target]');
-  let statsAnimated = false;
-  const runStatCounters = () => {
-    if (statsAnimated) return;
-    statsAnimated = true;
-    statValues.forEach(el => {
-      const target = parseInt(el.getAttribute('data-target'), 10) || 0;
-      const duration = 1400;
-      const startTime = performance.now();
-      const step = (now) => {
-        const elapsed = now - startTime;
-        const progress = Math.min(1, elapsed / duration);
-        const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-        const current = Math.floor(ease * target);
-        el.textContent = `${current}+`;
-        if (progress < 1) {
-          requestAnimationFrame(step);
-        } else {
-          el.textContent = `${target}+`;
-        }
-      };
-      requestAnimationFrame(step);
-    });
-  };
-
-  const heroStatsStack = document.querySelector('.hero-stats-stack');
-  if (heroStatsStack && 'IntersectionObserver' in window) {
-    const statsObs = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        setTimeout(runStatCounters, 350);
-        statsObs.disconnect();
-      }
-    }, { threshold: 0.15 });
-    statsObs.observe(heroStatsStack);
-  } else {
-    setTimeout(runStatCounters, 700);
-  }
 
   // 10. SCROLL REVEAL ENTRANCE OBSERVER (Progressive Enhancement)
   const revealEls = document.querySelectorAll('.reveal-up');
