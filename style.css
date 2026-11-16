@@ -1695,10 +1695,9 @@ body.ember-active .global-ember-canvas {
 }
 
 .engine-stage-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 5vw, 4.5rem);
-  align-items: start;
+  display: block;
+  max-width: 860px;
+  margin: 0 auto;
 }
 
 .engine-focus-title {
